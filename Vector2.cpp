@@ -30,7 +30,30 @@ Vector2 Vector2::operator-(const Vector2& rhs)
 	return result;
 }
 
+Vector2 Vector2::operator*(float rhs)
+{
+	Vector2 result = Vector2(rhs * x, rhs * y);
+	return result;
+}
+
+Vector2 Vector2::operator/(float rhs)
+{
+	return (*this) * (1 / rhs);	// multiply by (1 / rhs)
+}
+
 std::ostream& operator<<(std::ostream& ostream, const Vector2& rhs)
 {
 	return ostream << "(" << rhs.x << ", " << rhs.y << ")";
+}
+
+Vector2 operator*(float lhs, const Vector2& rhs)
+{
+	Vector2 result = Vector2(lhs * rhs.x, lhs * rhs.y);
+	return result;
+}
+
+Vector2 operator/(float lhs, const Vector2& rhs)
+{
+	Vector2 result = Vector2(rhs.x / lhs, rhs.y / lhs);
+	return result;
 }

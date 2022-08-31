@@ -13,9 +13,15 @@ public:
 	Vector2 Normalized();
 	float Magnitude();
 
+	// Member operator overloads
 	Vector2 operator+(const Vector2& rhs);
 	Vector2 operator-(const Vector2& rhs);
+	Vector2 operator*(float rhs);
+	Vector2 operator/(float rhs);
 
 };
 
+// Global operator overloads
 std::ostream& operator<<(std::ostream& ostream, const Vector2& rhs);
+Vector2 operator*(float lhs, const Vector2& rhs);
+Vector2 operator/(float lhs, const Vector2& rhs);
