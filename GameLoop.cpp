@@ -31,8 +31,7 @@ void GameLoop::Initialise()
 
 void GameLoop::LoadContent()
 {
-	
-
+	player = new Player(renderer);
 }
 
 bool GameLoop::Update()
@@ -49,8 +48,34 @@ bool GameLoop::Update()
 		if (e.type == SDL_QUIT) {
 			return false;
 		}
-	}
 
+		switch (e.type)
+		{
+		case SDL_KEYDOWN:
+		{
+			switch (e.type)
+			{
+			case SDL_SCANCODE_W:
+				player->Move(Vector2(0, 1));
+				break;
+			case SDL_SCANCODE_A:
+				player->Move(Vector2(-1, 0));
+				break;
+			case SDL_SCANCODE_S:
+				player->Move(Vector2(0, -1));
+				break;
+			case SDL_SCANCODE_D:
+				player->Move(Vector2(1, 0));
+				break;
+			}
+			break;
+		}
+		case SDL_MOUSEBUTTONDOWN:
+			break;
+		case SDL_MOUSEBUTTONUP:
+			break;
+		}
+	}
 
 	// Update game state
 	
@@ -68,7 +93,7 @@ void GameLoop::Render()
 	SDL_RenderClear(renderer);
 
 	// Render any other object here.
-
+	player->GetSprite()->Render();
 
 	SDL_RenderPresent(renderer);
 }
@@ -76,7 +101,7 @@ void GameLoop::Render()
 // Unload assets to release memory
 void GameLoop::UnloadContent()
 {
-
+	delete player;
 }
 
 void GameLoop::Quit()

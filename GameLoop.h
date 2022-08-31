@@ -4,7 +4,9 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
+#include "Player.h"
 
+class Player;
 
 class GameLoop
 {
@@ -19,8 +21,7 @@ public:
 private:
 	
 	// Game objects
-
-
+	Player* player;
 
 	// SDL pointers
 	SDL_Window* window;
