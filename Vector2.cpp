@@ -29,3 +29,8 @@ Vector2 Vector2::operator-(const Vector2& rhs)
 	Vector2 result = Vector2(x - rhs.x, y - rhs.y);
 	return result;
 }
+
+std::ostream& operator<<(std::ostream& ostream, const Vector2& rhs)
+{
+	return ostream << "(" << rhs.x << ", " << rhs.y << ")";
+}

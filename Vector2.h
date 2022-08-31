@@ -17,3 +17,5 @@ public:
 	Vector2 operator-(const Vector2& rhs);
 
 };
+
+std::ostream& operator<<(std::ostream& ostream, const Vector2& rhs);
