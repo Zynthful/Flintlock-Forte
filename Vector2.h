@@ -12,4 +12,8 @@ public:
 	
 	Vector2 Normalized();
 	float Magnitude();
+
+	Vector2 operator+(const Vector2& rhs);
+	Vector2 operator-(const Vector2& rhs);
+
 };

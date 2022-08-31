@@ -17,3 +17,15 @@ float Vector2::Magnitude()
 {
 	return sqrt(x * x + y * y);
 }
+
+Vector2 Vector2::operator+(const Vector2& rhs)
+{
+	Vector2 result = Vector2(x + rhs.x, y + rhs.y);
+	return result;
+}
+
+Vector2 Vector2::operator-(const Vector2& rhs)
+{
+	Vector2 result = Vector2(x - rhs.x, y - rhs.y);
+	return result;
+}
