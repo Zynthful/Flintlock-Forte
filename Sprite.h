@@ -14,10 +14,13 @@ public:
 	void Render();
 
 	void SetPosition(Vector2 _position);
+	
+	SDL_Rect* GetRect();
 
 private:
 	Vector2 position;
 
+	SDL_Surface* surface;
 	SDL_Texture* texture;
 	SDL_Renderer* renderer;
 };
