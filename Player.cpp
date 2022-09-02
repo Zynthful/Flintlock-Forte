@@ -2,7 +2,14 @@
 
 Player::Player()
 {
+
 }
+
+Player::~Player()
+{
+	delete playerSprite;
+}
+
 
 void Player::Move(Vector2 dir)
 {

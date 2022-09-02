@@ -14,7 +14,7 @@ void GameLoop::Initialise()
 			return;
 		}
 
-		window = SDL_CreateWindow("IntoGames", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 256, SDL_WINDOW_SHOWN);
+		window = SDL_CreateWindow("IntoGames", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_SHOWN);
 
 		if (window == NULL) {
 			std::cerr << "SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
@@ -31,6 +31,7 @@ void GameLoop::Initialise()
 void GameLoop::LoadContent()
 {
 	player = new Player();
+	player->playerSprite = new Sprite(renderer, "assets/PlayerSprite.png");
 }
 
 bool GameLoop::Update()
@@ -91,7 +92,11 @@ void GameLoop::Render()
 	SDL_SetRenderDrawColor(renderer, 60, 60, 60, 0);
 	SDL_RenderClear(renderer);
 
+	// Render any other object here.
+	player->playerSprite->Render();
+
 	SDL_RenderPresent(renderer);
+
 }
 
 // Unload assets to release memory
