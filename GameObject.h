@@ -18,7 +18,7 @@ public:
 	void SetScale(Vector2 _scale);
 	void SetScale(int x, int y);
 
-private:
+protected:
 	Vector2 position;
 	Vector2 scale = Vector2(1, 1);
 };

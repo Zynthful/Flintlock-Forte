@@ -52,7 +52,7 @@ bool GameLoop::Update()
 		{
 		case SDL_KEYDOWN:
 		{
-			switch (e.type)
+			switch (e.key.keysym.scancode)
 			{
 			case SDL_SCANCODE_W:
 				player->Move(Vector2(0, 1));

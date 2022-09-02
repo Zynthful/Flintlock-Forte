@@ -3,6 +3,7 @@
 Character::Character(SDL_Renderer* renderer)
 {
 	sprite = new Sprite(renderer, "assets/PlayerSprite.png");
+	sprite->SetPosition(position);
 }
 
 Character::~Character()
@@ -22,5 +23,6 @@ void Character::SetSprite(Sprite* _sprite)
 
 void Character::Move(Vector2 dir)
 {
-
+	position = position + (dir * 20);
+	sprite->SetPosition(position);
 }

@@ -67,6 +67,12 @@ Vector2 Vector2::operator/(float rhs)
 	return (*this) * (1 / rhs);	// multiply by (1 / rhs)
 }
 
+Vector2 Vector2::operator+=(const Vector2& rhs)
+{
+	Vector2 result = Vector2(rhs.x + x, rhs.y + y);
+	return result;
+}
+
 std::ostream& operator<<(std::ostream& ostream, const Vector2& rhs)
 {
 	return ostream << "(" << rhs.GetX() << ", " << rhs.GetY() << ")";

@@ -25,9 +25,14 @@ void Sprite::Render()
 	SDL_Rect* sourceRectangle = NULL;
 
 	SDL_Rect destinationRectangle;
-	destinationRectangle.x = 0;
-	destinationRectangle.y = 0;
+	destinationRectangle.x = position.GetX();
+	destinationRectangle.y = -position.GetY();
 	destinationRectangle.w = 100;
 	destinationRectangle.h = 100;
 	SDL_RenderCopy(renderer, texture, sourceRectangle, &destinationRectangle);
+}
+
+void Sprite::SetPosition(Vector2 _position)
+{
+	position = _position;
 }
