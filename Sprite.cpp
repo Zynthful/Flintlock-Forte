@@ -27,8 +27,8 @@ void Sprite::Render()
 	SDL_Rect destinationRectangle;
 	destinationRectangle.x = position.GetX();
 	destinationRectangle.y = -position.GetY();
-	destinationRectangle.w = 100;
-	destinationRectangle.h = 100;
+	destinationRectangle.w = 300;
+	destinationRectangle.h = 300;
 	SDL_RenderCopy(renderer, texture, sourceRectangle, &destinationRectangle);
 }
 

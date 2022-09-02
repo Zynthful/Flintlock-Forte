@@ -42,39 +42,16 @@ bool GameLoop::Update()
 	/* more events on the event queue, our while loop will exit when */
 	/* that occurs.                                                  */
 
-	while (SDL_PollEvent(&e) != 0) {
-
+	while (SDL_PollEvent(&e) != 0)
+	{
 		if (e.type == SDL_QUIT) {
 			return false;
 		}
 
-		switch (e.type)
-		{
-		case SDL_KEYDOWN:
-		{
-			switch (e.key.keysym.scancode)
-			{
-			case SDL_SCANCODE_W:
-				player->Move(Vector2(0, 1));
-				break;
-			case SDL_SCANCODE_A:
-				player->Move(Vector2(-1, 0));
-				break;
-			case SDL_SCANCODE_S:
-				player->Move(Vector2(0, -1));
-				break;
-			case SDL_SCANCODE_D:
-				player->Move(Vector2(1, 0));
-				break;
-			}
-			break;
-		}
-		case SDL_MOUSEBUTTONDOWN:
-			break;
-		case SDL_MOUSEBUTTONUP:
-			break;
-		}
+		// Update player input
+		player->GetInputComponent()->Update(&e);
 	}
+
 
 	// Update game state
 	
