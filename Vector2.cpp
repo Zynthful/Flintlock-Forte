@@ -6,6 +6,32 @@ Vector2::Vector2(int _x, int _y)
 	y = _y;
 }
 
+int Vector2::GetX() const
+{
+	return x;
+}
+
+int Vector2::GetY() const
+{
+	return y;
+}
+
+void Vector2::Set(int _x, int _y)
+{
+	x = _x;
+	y = _y;
+}
+
+void Vector2::SetX(int _x)
+{
+	x = _x;
+}
+
+void Vector2::SetY(int _y)
+{
+	y = _y;
+}
+
 Vector2 Vector2::Normalized()
 {
 	float k = 1 / Magnitude();
@@ -43,17 +69,17 @@ Vector2 Vector2::operator/(float rhs)
 
 std::ostream& operator<<(std::ostream& ostream, const Vector2& rhs)
 {
-	return ostream << "(" << rhs.x << ", " << rhs.y << ")";
+	return ostream << "(" << rhs.GetX() << ", " << rhs.GetY() << ")";
 }
 
 Vector2 operator*(float lhs, const Vector2& rhs)
 {
-	Vector2 result = Vector2(lhs * rhs.x, lhs * rhs.y);
+	Vector2 result = Vector2(lhs * rhs.GetX(), lhs * rhs.GetY());
 	return result;
 }
 
 Vector2 operator/(float lhs, const Vector2& rhs)
 {
-	Vector2 result = Vector2(rhs.x / lhs, rhs.y / lhs);
+	Vector2 result = Vector2(rhs.GetX() / lhs, rhs.GetY() / lhs);
 	return result;
 }

@@ -22,8 +22,7 @@ void GameObject::SetPosition(Vector2 _position)
 
 void GameObject::SetPosition(int x, int y)
 {
-	position.x = x;
-	position.y = y;
+	position.Set(x, y);
 }
 
 Vector2 GameObject::GetScale()
@@ -38,6 +37,5 @@ void GameObject::SetScale(Vector2 _scale)
 
 void GameObject::SetScale(int x, int y)
 {
-	scale.x = x;
-	scale.y = y;
+	scale.Set(x, y);
 }
