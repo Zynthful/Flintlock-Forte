@@ -26,12 +26,11 @@ void GameLoop::Initialise()
 			std::cerr << "SDL could not initialize renderer! SDL_Error: " << SDL_GetError() << std::endl;
 		}
 	}
-
 }
 
 void GameLoop::LoadContent()
 {
-	player = new Player(renderer);
+	player = new Player();
 }
 
 bool GameLoop::Update()
@@ -91,9 +90,6 @@ void GameLoop::Render()
 	// Change the background colour here
 	SDL_SetRenderDrawColor(renderer, 60, 60, 60, 0);
 	SDL_RenderClear(renderer);
-
-	// Render any other object here.
-	player->GetSprite()->Render();
 
 	SDL_RenderPresent(renderer);
 }
