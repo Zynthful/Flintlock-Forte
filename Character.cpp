@@ -23,6 +23,6 @@ void Character::SetSprite(Sprite* _sprite)
 
 void Character::Move(Vector2 dir)
 {
-	position = position + (dir * 20);
+	position += dir;
 	sprite->SetPosition(position);
 }
