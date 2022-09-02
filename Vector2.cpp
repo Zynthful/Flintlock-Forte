@@ -73,6 +73,24 @@ Vector2& Vector2::operator+=(const Vector2& rhs)
 	return *this;
 }
 
+Vector2& Vector2::operator-=(const Vector2& rhs)
+{
+	*this = *this - rhs;
+	return *this;
+}
+
+Vector2& Vector2::operator*=(float rhs)
+{
+	*this = *this * rhs;
+	return *this;
+}
+
+Vector2& Vector2::operator/=(float rhs)
+{
+	*this = *this / rhs;
+	return *this;
+}
+
 std::ostream& operator<<(std::ostream& ostream, const Vector2& rhs)
 {
 	return ostream << "(" << rhs.GetX() << ", " << rhs.GetY() << ")";
