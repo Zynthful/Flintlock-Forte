@@ -20,5 +20,5 @@ public:
 
 private:
 	Vector2 position;
-	Vector2 scale;
+	Vector2 scale = Vector2(1, 1);
 };
