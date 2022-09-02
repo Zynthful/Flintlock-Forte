@@ -30,8 +30,7 @@ void GameLoop::Initialise()
 
 void GameLoop::LoadContent()
 {
-	player = new Player();
-	player->playerSprite = new Sprite(renderer, "assets/PlayerSprite.png");
+	player = new Player(renderer);
 }
 
 bool GameLoop::Update()
@@ -93,7 +92,7 @@ void GameLoop::Render()
 	SDL_RenderClear(renderer);
 
 	// Render any other object here.
-	player->playerSprite->Render();
+	player->GetSprite()->Render();
 
 	SDL_RenderPresent(renderer);
 

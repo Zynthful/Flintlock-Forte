@@ -1,18 +1,12 @@
 #include "Player.h"
 
-Player::Player()
+Player::Player(SDL_Renderer* renderer)
+	: Character(renderer)
 {
 
 }
 
 Player::~Player()
 {
-	delete playerSprite;
-}
 
-
-void Player::Move(Vector2 dir)
-{
-	pos.x += dir.x;
-	pos.y += dir.y;
 }

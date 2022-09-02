@@ -1,19 +1,10 @@
 #pragma once
-
-#include "Vector2.h"
+#include "Character.h"
 #include "GameLoop.h"
-#include "Sprite.h"
 
-class Player 
+class Player : public Character
 {
 public:
-	Player();
+	Player(SDL_Renderer* renderer);
 	~Player();
-
-	Vector2 pos;
-
-	void Move(Vector2 dir);
-
-	Sprite* playerSprite = NULL;
-
 };
