@@ -12,7 +12,9 @@ public:
 	virtual void Update();
 	virtual void Render();
 
-public:
-	GameObject* owner;
+	GameObject* GetOwner();
+	void SetOwner(GameObject* obj);
 
+protected:
+	GameObject* owner;
 };

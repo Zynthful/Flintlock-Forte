@@ -29,7 +29,7 @@ template <typename T> inline ComponentID GetComponentTypeID() noexcept
 // max components that an entity can hold
 constexpr std::size_t maxComponents = 32;
 
-// if we need to find out if in an entity has a selection of componeents, we'll be able to compare whether it has it or not
+// if we need to find out if in an entity has a selection of components, we'll be able to compare whether it has it or not
 // i.e. we can generate a bitset, pass it in, and if it matches the signature of the entities, we'll know we have all the components we need
 using ComponentBitSet = std::bitset<maxComponents>;
 
