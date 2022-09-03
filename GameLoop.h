@@ -36,8 +36,5 @@ private:
 	double deltaTime = 0;
 	double lastFrameTime = 0;
 	double currentFrameTime = 0;
-
-	static int* i;
-
 };
 

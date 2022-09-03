@@ -4,8 +4,6 @@
 class ECSManager
 {
 public:
-	ECSManager();
-
 	void Update();
 	void Render();
 	void Refresh();

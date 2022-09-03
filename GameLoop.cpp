@@ -1,7 +1,7 @@
 #include "GameLoop.h"
 
 // Declare static vars
-ECSManager* GameLoop::ecsManager = nullptr;
+ECSManager* GameLoop::ecsManager = new ECSManager();
 
 void GameLoop::Initialise()
 {

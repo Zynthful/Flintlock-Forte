@@ -16,6 +16,9 @@
     <Filter Include="Source Files\Components">
       <UniqueIdentifier>{0e28c4dd-f088-40b8-b085-0adb9b816f64}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{ff84381c-c682-49be-811d-1dcabc1e43ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -74,15 +77,6 @@
     <ClInclude Include="Character.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ColliderComponent2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerInputComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CollisionLayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -91,6 +85,15 @@
     </ClInclude>
     <ClInclude Include="ECSManager.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderComponent2D.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerInputComponent.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

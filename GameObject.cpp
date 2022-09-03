@@ -1,7 +1,10 @@
 #include "GameObject.h"
+#include "GameLoop.h"
 
 GameObject::GameObject()
 {
+	// Register this object to the ECSManager
+	GameLoop::GetECSManager()->RegisterGameObject(this);
 }
 
 GameObject::~GameObject()
