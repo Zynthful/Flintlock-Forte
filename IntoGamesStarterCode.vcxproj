@@ -23,6 +23,7 @@
     <ClCompile Include="ColliderComponent2D.cpp" />
     <ClCompile Include="CollisionLayer.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="ECSManager.cpp" />
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
@@ -36,6 +37,8 @@
     <ClInclude Include="ColliderComponent2D.h" />
     <ClInclude Include="CollisionLayer.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="ECS.h" />
+    <ClInclude Include="ECSManager.h" />
     <ClInclude Include="GameLoop.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="PlayerInputComponent.h" />
