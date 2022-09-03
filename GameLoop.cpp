@@ -58,6 +58,9 @@ bool GameLoop::Update()
 
 	// Update game state
 
+	// Invoke ECS events
+	ecsManager->Update();
+
 	// Loop through all colliders on each layer
 	// Check for collision against other colliders on that layer
 	// Invoke relevant events
