@@ -3,13 +3,16 @@
 
 class ECSManager
 {
-private:
-	std::vector<std::unique_ptr<GameObject>> gameObjects;
-
 public:
+	ECSManager();
+
 	void Update();
 	void Render();
 	void Refresh();
 
-	GameObject& AddGameObject();
+	void RegisterGameObject(GameObject* obj);
+	GameObject& AddNewGameObject();
+
+private:
+	std::vector<std::unique_ptr<GameObject>> gameObjects;
 };

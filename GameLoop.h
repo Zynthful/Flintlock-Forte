@@ -5,6 +5,7 @@
 #include <SDL_image.h>
 #include <iostream>
 #include "Player.h"
+#include "ECSManager.h"
 
 class Player;
 
@@ -18,8 +19,12 @@ public:
 	void UnloadContent();
 	void Quit();
 
+	static ECSManager* GetECSManager();
+
 private:
-	
+	// Entity Component System Manager
+	static ECSManager* ecsManager;
+
 	// Game objects
 	Player* player;
 
@@ -27,10 +32,12 @@ private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	
-
 	// Game logic
 	double deltaTime = 0;
 	double lastFrameTime = 0;
 	double currentFrameTime = 0;
+
+	static int* i;
+
 };
 

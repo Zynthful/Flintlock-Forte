@@ -1,6 +1,5 @@
 #pragma once
 #include "Character.h"
-#include "GameLoop.h"
 #include "PlayerInputComponent.h"
 #include "ColliderComponent2D.h"
 

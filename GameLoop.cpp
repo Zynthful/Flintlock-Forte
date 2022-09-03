@@ -1,5 +1,8 @@
 #include "GameLoop.h"
 
+// Declare static vars
+ECSManager* GameLoop::ecsManager = nullptr;
+
 void GameLoop::Initialise()
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -59,23 +62,23 @@ bool GameLoop::Update()
 	// Check for collision against other colliders on that layer
 	// Invoke relevant events
 
-	const int size = 4;
-	SDL_Rect* colliders[size];
-	for (int i = 0; i < size; i++)
-	{
-		for (int j = i + 1; j < size; j++)
-		{
-			//std::cout << "Comparing " << i << " against " << j << std::endl;
-			//if (SDL_HasIntersection(colliders[i], colliders[j]))
-			//{
+	//const int size = 4;
+	//SDL_Rect* colliders[size];
+	//for (int i = 0; i < size; i++)
+	//{
+	//	for (int j = i + 1; j < size; j++)
+	//	{
+	//		std::cout << "Comparing " << i << " against " << j << std::endl;
+	//		if (SDL_HasIntersection(colliders[i], colliders[j]))
+	//		{
 
-			//}
-			//else
-			//{
+	//		}
+	//		else
+	//		{
 
-			//}
-		}
-	}
+	//		}
+	//	}
+	//}
 
 
 	return true;
@@ -109,4 +112,9 @@ void GameLoop::Quit()
 
 	window = NULL;
 	SDL_Quit();
+}
+
+ECSManager* GameLoop::GetECSManager()
+{
+	return ecsManager;
 }

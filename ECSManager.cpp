@@ -24,10 +24,16 @@ void ECSManager::Refresh()
 }
 
 // Adds a gameobject to the world
-GameObject& ECSManager::AddGameObject()
+GameObject& ECSManager::AddNewGameObject()
 {
 	GameObject* obj = new GameObject();
-	std::unique_ptr<GameObject> uPtr{ obj };
-	gameObjects.emplace_back(std::move(uPtr));
+	RegisterGameObject(obj);
 	return *obj;
+}
+
+// Register GameObject to our vector of gameObjects
+void ECSManager::RegisterGameObject(GameObject* obj)
+{
+	std::unique_ptr<GameObject> uPtr { obj };
+	gameObjects.emplace_back(std::move(uPtr));
 }
