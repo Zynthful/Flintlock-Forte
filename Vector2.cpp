@@ -1,9 +1,9 @@
 #include "Vector2.h"
 
 Vector2::Vector2(int _x, int _y)
+	: x(_x), y(_y)
 {
-	x = _x;
-	y = _y;
+
 }
 
 int Vector2::GetX() const
