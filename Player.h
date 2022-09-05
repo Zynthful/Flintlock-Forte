@@ -9,11 +9,19 @@ public:
 	Player(SDL_Renderer* renderer);
 	~Player();
 
-	PlayerInputComponent* GetInputComponent();
-
 private:
 	// private copy constructor to prevent the creation of a player object
 	Player(const Player&);
+
+public:
+	// Actions
+	void Attack();
+	void Deflect();
+	void Dodge();
+
+public:
+	// Getters/setters
+	PlayerInputComponent* GetInputComponent();
 
 private:
 	PlayerInputComponent* input;

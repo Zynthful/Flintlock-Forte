@@ -24,6 +24,7 @@
     <ClCompile Include="CollisionLayer.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ECSManager.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
@@ -39,6 +40,7 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="ECS.h" />
     <ClInclude Include="ECSManager.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameLoop.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="PlayerInputComponent.h" />

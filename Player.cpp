@@ -11,6 +11,18 @@ Player::~Player()
 
 }
 
+void Player::Attack()
+{
+}
+
+void Player::Deflect()
+{
+}
+
+void Player::Dodge()
+{
+}
+
 PlayerInputComponent* Player::GetInputComponent()
 {
 	return input;
