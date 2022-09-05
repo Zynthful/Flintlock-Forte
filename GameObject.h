@@ -16,9 +16,9 @@ protected:
 	ComponentBitSet componentBitSet;
 
 public:
-	void Update();
-	void Render();
-	void Destroy();
+	virtual void Update();
+	virtual void Render();
+	virtual void Destroy();
 
 	// Active getter/setter
 	bool GetActive() const;
@@ -32,7 +32,7 @@ public:
 	template <typename T, typename... TArgs> T& AddComponent(TArgs&&... mArgs)
 	{
 		T* c(new T(std::forward<TArgs>(mArgs)...));
-		c->entity = this;
+		c->SetOwner(this);
 		std::unique_ptr<Component> uPtr{ c };
 		components.emplace_back(std::move(uPtr));
 
@@ -52,8 +52,8 @@ public:
 
 public:
 	// Position getters/setters
-	Vector2 GetPosition();
-	void SetPosition(Vector2 _position);
+	Vector2 GetPosition() const;
+	void SetPosition(Vector2& _position);
 	void SetPosition(int x, int y);
 
 	// Scale getters/setters

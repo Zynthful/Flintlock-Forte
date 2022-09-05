@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Sprite.h"
+#include "VelocityComponent.h"
 
 class Character : public GameObject
 {
@@ -9,6 +10,8 @@ public:
 	~Character();
 
 public:
+	virtual void Update() override;
+
 	// Movement
 	void Move(Vector2 dir);
 	void StopMoving();
@@ -23,21 +26,15 @@ public:
 	// Movement
 	float GetSpeed() { return speed; }
 	void SetSpeed(float value);
-	float GetAcceleration() { return acceleration; }
-	void SetAcceleration(float value);
-	float GetDeceleration() { return deceleration; }
-	void SetDeceleration(float value);
 	
-	Vector2 GetVelocity() { return velocity; }
+	VelocityComponent* GetVelocityComponent() { return velComp; }
 
 protected:
 	Sprite* sprite;
 
 	// Movement Settings
-	float speed = 10;
-	float acceleration = 1;
-	float deceleration = 1;
+	float speed = 3;
 
-	Vector2 velocity;
+	VelocityComponent* velComp = &AddComponent<VelocityComponent>();
 
 };

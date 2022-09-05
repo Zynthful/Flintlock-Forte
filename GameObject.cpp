@@ -27,12 +27,12 @@ void GameObject::Destroy()
 	SetActive(false);
 }
 
-Vector2 GameObject::GetPosition()
+Vector2 GameObject::GetPosition() const
 {
 	return position;
 }
 
-void GameObject::SetPosition(Vector2 _position)
+void GameObject::SetPosition(Vector2& _position)
 {
 	position = _position;
 }

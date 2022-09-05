@@ -3,7 +3,14 @@
 Vector2::Vector2(int _x, int _y)
 	: x(_x), y(_y)
 {
+	//std::cout << "new vec!" << std::endl;
+}
 
+
+Vector2::Vector2(const Vector2& other)
+	: x(other.x), y(other.y)
+{
+	//std::cout << "new vec! (copy)" << std::endl;
 }
 
 int Vector2::GetX() const
@@ -18,8 +25,8 @@ int Vector2::GetY() const
 
 void Vector2::Set(int _x, int _y)
 {
-	x = _x;
-	y = _y;
+	SetX(_x);
+	SetY(_y);
 }
 
 void Vector2::SetX(int _x)
@@ -41,7 +48,12 @@ Vector2 Vector2::Normalized()
 
 float Vector2::Magnitude()
 {
-	return sqrt(x * x + y * y);
+	return sqrt(RelativeMagnitude());
+}
+
+float Vector2::RelativeMagnitude()
+{
+	return (x * x) + (y * y);
 }
 
 Vector2 Vector2::operator+(const Vector2& rhs)

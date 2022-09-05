@@ -21,9 +21,8 @@ void PlayerInputComponent::UpdateInput(SDL_Event& e)
 		if (lastKeyPressed == e.key.keysym.scancode)
 			break;
 
+		// assign last key pressed to the key pressed
 		lastKeyPressed = e.key.keysym.scancode;
-
-		//pressing = true;
 
 		switch (e.key.keysym.scancode)
 		{
@@ -90,6 +89,7 @@ void PlayerInputComponent::OnMovementPressed(Vector2 dir)
 
 void PlayerInputComponent::OnMovementReleased(Vector2 dir)
 {
+	player->StopMoving();
 }
 
 void PlayerInputComponent::OnAttackPressed()

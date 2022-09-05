@@ -32,6 +32,7 @@
     <ClCompile Include="PlayerInputComponent.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Vector2.cpp" />
+    <ClCompile Include="VelocityComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
@@ -47,6 +48,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Vector2.h" />
+    <ClInclude Include="VelocityComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
