@@ -52,7 +52,7 @@ bool GameLoop::Update()
 		}
 
 		// Update player input
-		player->GetInputComponent()->Update(&e);
+		player->GetInputComponent()->UpdateInput(e);
 	}
 
 

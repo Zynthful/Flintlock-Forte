@@ -11,7 +11,7 @@ public:
 	PlayerInputComponent(Player* _player);
 	~PlayerInputComponent();
 
-	void Update(SDL_Event* e);
+	void UpdateInput(SDL_Event& e);
 
 	void OnMovementPressed(Vector2 dir);
 	void OnMovementReleased(Vector2 dir);
@@ -24,4 +24,10 @@ public:
 
 private:
 	Player* player;
+
+	// this warning means nothing
+	// fuck off
+	// initialised to SDL_NUM_SCANCODES to basically mean none
+	// reset on key up
+	SDL_Scancode lastKeyPressed = SDL_Scancode::SDL_NUM_SCANCODES;
 };

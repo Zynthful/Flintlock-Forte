@@ -11,18 +11,33 @@ Character::~Character()
 	delete sprite;
 }
 
-Sprite* Character::GetSprite()
+void Character::SetSprite(Sprite* value)
 {
-	return sprite;
+	sprite = value;
 }
 
-void Character::SetSprite(Sprite* _sprite)
+void Character::SetSpeed(float value)
 {
-	sprite = _sprite;
+	speed = value;
+}
+
+void Character::SetAcceleration(float value)
+{
+	acceleration = value;
+}
+
+void Character::SetDeceleration(float value)
+{
+	deceleration = value;
 }
 
 void Character::Move(Vector2 dir)
 {
-	position += dir;
+	velocity = dir * speed;	// temp, does not enforce accel/decel
+	position += velocity;
 	sprite->SetPosition(position);
+}
+
+void Character::StopMoving()
+{
 }

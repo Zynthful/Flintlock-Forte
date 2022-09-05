@@ -9,21 +9,29 @@ PlayerInputComponent::PlayerInputComponent(Player* _player)
 
 PlayerInputComponent::~PlayerInputComponent()
 {
-
 }
 
-void PlayerInputComponent::Update(SDL_Event* e)
+void PlayerInputComponent::UpdateInput(SDL_Event& e)
 {
-	switch (e->type)
+	switch (e.type)
 	{
 	case SDL_KEYDOWN:
 	{
-		switch (e->key.keysym.scancode)
+		// compare last key pressed. if it matches, stop
+		if (lastKeyPressed == e.key.keysym.scancode)
+			break;
+
+		lastKeyPressed = e.key.keysym.scancode;
+
+		//pressing = true;
+
+		switch (e.key.keysym.scancode)
 		{
 			// Movement
 		case SDL_SCANCODE_W:
 			OnMovementPressed(Vector2(0, 1));
-			break;
+			return;
+			// break yourself
 		case SDL_SCANCODE_A:
 			OnMovementPressed(Vector2(-1, 0));
 			break;
@@ -42,7 +50,10 @@ void PlayerInputComponent::Update(SDL_Event* e)
 	}
 	case SDL_KEYUP:
 	{
-		switch (e->key.keysym.scancode)
+		// reset last key pressed
+		lastKeyPressed = SDL_Scancode::SDL_NUM_SCANCODES;
+
+		switch (e.key.keysym.scancode)
 		{
 			// Movement
 		case SDL_SCANCODE_W:
