@@ -1,9 +1,10 @@
 #pragma once
+#include "Component.h"
 #include "SDL.h"
 
 class Player;
 
-class PlayerInputComponent
+class PlayerInputComponent : public Component
 {
 public:
 	PlayerInputComponent(Player* _player);

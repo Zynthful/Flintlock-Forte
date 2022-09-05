@@ -1,8 +1,9 @@
 #pragma once
+#include "Component.h"
 #include "SDL.h"
 #include "Sprite.h"
 
-class ColliderComponent2D
+class ColliderComponent2D : public Component
 {
 public:
 	// create collider rect directly using a rect

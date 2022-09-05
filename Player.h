@@ -1,6 +1,5 @@
 #pragma once
 #include "Character.h"
-#include "GameLoop.h"
 #include "PlayerInputComponent.h"
 #include "ColliderComponent2D.h"
 
@@ -11,6 +10,10 @@ public:
 	~Player();
 
 	PlayerInputComponent* GetInputComponent();
+
+private:
+	// private copy constructor to prevent the creation of a player object
+	Player(const Player&);
 
 private:
 	PlayerInputComponent* input;

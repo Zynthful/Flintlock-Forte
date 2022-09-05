@@ -1,13 +1,30 @@
 #include "GameObject.h"
+#include "GameLoop.h"
 
 GameObject::GameObject()
 {
-
+	// Register this object to the ECSManager
+	GameLoop::GetECSManager()->RegisterGameObject(this);
 }
 
 GameObject::~GameObject()
 {
+}
 
+void GameObject::Update()
+{
+	for (auto& c : components) c->Update();
+	for (auto& c : components) c->Render();
+
+}
+
+void GameObject::Render()
+{
+}
+
+void GameObject::Destroy()
+{
+	SetActive(false);
 }
 
 Vector2 GameObject::GetPosition()
@@ -38,4 +55,14 @@ void GameObject::SetScale(Vector2 _scale)
 void GameObject::SetScale(int x, int y)
 {
 	scale.Set(x, y);
+}
+
+bool GameObject::GetActive() const
+{
+	return active;
+}
+
+void GameObject::SetActive(bool value)
+{
+	active = value;
 }
