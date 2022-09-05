@@ -12,6 +12,10 @@ public:
 	PlayerInputComponent* GetInputComponent();
 
 private:
+	// private copy constructor to prevent the creation of a player object
+	Player(const Player&);
+
+private:
 	PlayerInputComponent* input;
 	ColliderComponent2D* collider;
 };
