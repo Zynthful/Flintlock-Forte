@@ -8,7 +8,8 @@ Player::Player(SDL_Renderer* renderer)
 
 Player::~Player()
 {
-
+	delete input;
+	delete collider;
 }
 
 void Player::Attack()
