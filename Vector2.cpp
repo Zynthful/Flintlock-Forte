@@ -1,16 +1,19 @@
 #include "Vector2.h"
 
+const Vector2 Vector2::up = Vector2(0, -1);
+const Vector2 Vector2::down = Vector2(0, 1);
+const Vector2 Vector2::right = Vector2(1, 0);
+const Vector2 Vector2::left = Vector2(-1, 0);
+
+
 Vector2::Vector2(int _x, int _y)
 	: x(_x), y(_y)
 {
-	//std::cout << "new vec!" << std::endl;
 }
-
 
 Vector2::Vector2(const Vector2& other)
 	: x(other.x), y(other.y)
 {
-	//std::cout << "new vec! (copy)" << std::endl;
 }
 
 int Vector2::GetX() const

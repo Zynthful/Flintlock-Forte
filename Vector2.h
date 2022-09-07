@@ -1,5 +1,4 @@
 #pragma once
-
 #include<iostream>
 
 class Vector2
@@ -21,6 +20,7 @@ public:
 	float Magnitude();
 	float RelativeMagnitude();	// magnitude without sqrt
 
+public:
 	// Member operator overloads
 	Vector2 operator+(const Vector2& rhs);
 	Vector2 operator-(const Vector2& rhs);
@@ -34,6 +34,13 @@ public:
 private:
 	int x;
 	int y;
+
+public:
+	const static Vector2 up;
+	const static Vector2 down;
+	const static Vector2 right;
+	const static Vector2 left;
+
 };
 
 // Global operator overloads
