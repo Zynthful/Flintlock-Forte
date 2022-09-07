@@ -4,16 +4,16 @@
 class Vector2
 {
 public:
-	Vector2(int _x = 0, int _y = 0);
+	Vector2(float _x = 0, float _y = 0);
 	Vector2(const Vector2& other);
 
 public:
 	// Getters/setters
-	int GetX() const;
-	int GetY() const;
-	void Set(int _x, int _y);
-	void SetX(int _x);
-	void SetY(int _y);
+	float GetX() const;
+	float GetY() const;
+	void Set(float _x, float _y);
+	void SetX(float _x);
+	void SetY(float _y);
 
 	// Vector utils
 	Vector2 Normalized();
@@ -32,10 +32,11 @@ public:
 	Vector2& operator/=(float rhs);
 
 private:
-	int x;
-	int y;
+	float x;
+	float y;
 
 public:
+	int yy;
 	const static Vector2 up;
 	const static Vector2 down;
 	const static Vector2 right;

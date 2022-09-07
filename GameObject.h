@@ -29,7 +29,8 @@ public:
 		return componentBitSet[GetComponentTypeID<T>];
 	}
 
-	template <typename T, typename... TArgs> T& AddComponent(TArgs&&... mArgs)
+	template <typename T, typename... TArgs>
+	T& AddComponent(TArgs&&... mArgs)
 	{
 		T* c(new T(std::forward<TArgs>(mArgs)...));
 		c->SetOwner(this);
@@ -54,12 +55,12 @@ public:
 	// Position getters/setters
 	Vector2 GetPosition() const;
 	void SetPosition(Vector2& _position);
-	void SetPosition(int x, int y);
+	void SetPosition(float x, float y);
 
 	// Scale getters/setters
 	Vector2 GetScale();
 	void SetScale(Vector2 _scale);
-	void SetScale(int x, int y);
+	void SetScale(float x, float y);
 
 protected:
 	bool active = true;

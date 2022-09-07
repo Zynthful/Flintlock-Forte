@@ -6,7 +6,7 @@ const Vector2 Vector2::right = Vector2(1, 0);
 const Vector2 Vector2::left = Vector2(-1, 0);
 const Vector2 Vector2::zero = Vector2(0, 0);
 
-Vector2::Vector2(int _x, int _y)
+Vector2::Vector2(float _x, float _y)
 	: x(_x), y(_y)
 {
 }
@@ -16,28 +16,28 @@ Vector2::Vector2(const Vector2& other)
 {
 }
 
-int Vector2::GetX() const
+float Vector2::GetX() const
 {
 	return x;
 }
 
-int Vector2::GetY() const
+float Vector2::GetY() const
 {
 	return y;
 }
 
-void Vector2::Set(int _x, int _y)
+void Vector2::Set(float _x, float _y)
 {
 	SetX(_x);
 	SetY(_y);
 }
 
-void Vector2::SetX(int _x)
+void Vector2::SetX(float _x)
 {
 	x = _x;
 }
 
-void Vector2::SetY(int _y)
+void Vector2::SetY(float _y)
 {
 	y = _y;
 }

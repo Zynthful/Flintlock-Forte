@@ -1,6 +1,6 @@
 #include "MathUtils.h"
 
-int MathUtils::Clamp(int value, const int& lowerBound, const int& upperBound)
+float MathUtils::Clamp(float value, const float& lowerBound, const float& upperBound)
 {
 	if (value > upperBound)
 		value = upperBound;
@@ -10,17 +10,15 @@ int MathUtils::Clamp(int value, const int& lowerBound, const int& upperBound)
 	return value;
 }
 
-Vector2 MathUtils::ClampVector2Magnitude(Vector2 vector, const int& lowerBound, const int& upperBound)
+Vector2 MathUtils::ClampVector2Magnitude(Vector2 vector, const float& lowerBound, const float& upperBound)
 {
-
-	int magnitude = (int)vector.Magnitude();
-	int clampedMagnitude = Clamp(magnitude, lowerBound, upperBound);
+	float magnitude = vector.Magnitude();
+	float clampedMagnitude = Clamp(magnitude, lowerBound, upperBound);
 
 	// Return zero vector if magnitude is 0
 	if (magnitude == 0)
 		return Vector2(0, 0);
 
-	float clampScalar = (float)clampedMagnitude / (float)magnitude;
+	float clampScalar = clampedMagnitude / magnitude;
 	return vector *= clampScalar;
 }
-

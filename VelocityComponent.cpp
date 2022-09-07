@@ -1,7 +1,7 @@
 #include "VelocityComponent.h"
 #include "GameObject.h"
 
-VelocityComponent::VelocityComponent(int& _maxSpeed)
+VelocityComponent::VelocityComponent(float& _maxSpeed)
 	: maxSpeed(_maxSpeed)
 {
 }
@@ -44,5 +44,4 @@ void VelocityComponent::Update()
 	Vector2 prevPos = newPos;
 	newPos += velocity;
 	owner->SetPosition(newPos);
-	std::cout << "new pos: " << newPos << ", " << "diff: " << newPos - prevPos << std::endl;
 }

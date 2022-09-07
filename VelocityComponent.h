@@ -6,7 +6,7 @@
 class VelocityComponent : public Component
 {
 public:
-	VelocityComponent(int& maxSpeed);
+	VelocityComponent(float& maxSpeed);
 
 	Vector2 GetVelocity() { return velocity; }
 
@@ -22,5 +22,5 @@ private:
 
 	Vector2 destinationVel;
 
-	int& maxSpeed;
+	float& maxSpeed;
 };
