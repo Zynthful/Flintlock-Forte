@@ -23,6 +23,9 @@ public:
 	void OnDodgeReleased();
 
 private:
+	// pointer to play
+	// as a component, should just get owner instead
+	// and cast to Player class?
 	Player* player;
 
 	// this warning means nothing

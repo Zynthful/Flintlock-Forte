@@ -4,7 +4,6 @@
 PlayerInputComponent::PlayerInputComponent(Player* _player)
 	: player(_player)
 {
-
 }
 
 PlayerInputComponent::~PlayerInputComponent()
@@ -17,7 +16,8 @@ void PlayerInputComponent::UpdateInput(SDL_Event& e)
 	{
 	case SDL_KEYDOWN:
 	{
-		// compare last key pressed. if it matches, stop
+		// compare key pressed against last key pressed against.
+		// if it matches, stop
 		if (lastKeyPressed == e.key.keysym.scancode)
 			break;
 
