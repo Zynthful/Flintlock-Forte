@@ -35,7 +35,13 @@ private:
 	// reset on key up
 	SDL_Scancode lastKeyPressed = SDL_Scancode::SDL_NUM_SCANCODES;
 
+	// the current direction of input
 	Vector2 dir = Vector2(0, 0);
+
+	// tracks each key's held status
+	// needed to prevent multiple calls to KeyPressed for the same key afer being held for a short delay
+	// fuck you SDL's input event system
+	// todo: set up map of bools to each key?
 	bool wHeld = false;
 	bool aHeld = false;
 	bool sHeld = false;

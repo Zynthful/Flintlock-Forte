@@ -30,6 +30,7 @@ void PlayerInputComponent::UpdateInput(SDL_Event& e)
 		{
 			// Movement
 		case SDL_SCANCODE_W:
+			// don't call multiple KeyDowns if we're already holding
 			if (wHeld)
 				break;
 			wHeld = true;

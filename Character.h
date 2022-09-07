@@ -34,7 +34,9 @@ protected:
 
 	// Movement Settings
 	float speed = 7;
+	float acceleration = 3;
+	float deceleration = 5;
 
-	VelocityComponent* velComp = &AddComponent<VelocityComponent>(speed);
+	VelocityComponent* velComp = &AddComponent<VelocityComponent>(speed, acceleration, deceleration);
 
 };

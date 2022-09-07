@@ -1,8 +1,8 @@
 #include "VelocityComponent.h"
 #include "GameObject.h"
 
-VelocityComponent::VelocityComponent(float& _maxSpeed)
-	: maxSpeed(_maxSpeed)
+VelocityComponent::VelocityComponent(float& _maxSpeed, float& _acceleration, float& _deceleration)
+	: maxSpeed(_maxSpeed), acceleration(_acceleration), deceleration(_deceleration)
 {
 }
 

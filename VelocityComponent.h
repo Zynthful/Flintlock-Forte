@@ -6,7 +6,7 @@
 class VelocityComponent : public Component
 {
 public:
-	VelocityComponent(float& maxSpeed);
+	VelocityComponent(float& _maxSpeed, float& _acceleration, float& _deceleration);
 
 	Vector2 GetVelocity() { return velocity; }
 
@@ -17,10 +17,12 @@ public:
 
 private:
 	Vector2 velocity;
-	float acceleration = 2;
-	float deceleration = 2;
-
 	Vector2 destinationVel;
 
+	// should be >0
+	float& acceleration;
+	float& deceleration;
+
+	// todo: make max speed only be capped by input rather than always capped
 	float& maxSpeed;
 };
