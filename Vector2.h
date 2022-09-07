@@ -36,7 +36,6 @@ private:
 	float y;
 
 public:
-	int yy;
 	const static Vector2 up;
 	const static Vector2 down;
 	const static Vector2 right;
