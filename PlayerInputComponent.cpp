@@ -33,29 +33,25 @@ void PlayerInputComponent::UpdateInput(SDL_Event& e)
 			if (wHeld)
 				break;
 			wHeld = true;
-			dir += Vector2::up;
-			OnMovementKeyPressed(dir);
+			OnMovementKeyPressed(Vector2::up);
 			break;
 		case SDL_SCANCODE_A:
 			if (aHeld)
 				break;
 			aHeld = true;
-			dir += Vector2::left;
-			OnMovementKeyPressed(dir);
+			OnMovementKeyPressed(Vector2::left);
 			break;
 		case SDL_SCANCODE_S:
 			if (sHeld)
 				break;
 			sHeld = true;
-			dir += Vector2::down;
-			OnMovementKeyPressed(dir);
+			OnMovementKeyPressed(Vector2::down);
 			break;
 		case SDL_SCANCODE_D:
 			if (dHeld)
 				break;
 			dHeld = true;
-			dir += Vector2::right;
-			OnMovementKeyPressed(dir);
+			OnMovementKeyPressed(Vector2::right);
 			break;
 			// Actions
 		case SDL_SCANCODE_SPACE:
@@ -74,27 +70,19 @@ void PlayerInputComponent::UpdateInput(SDL_Event& e)
 			// Movement
 		case SDL_SCANCODE_W:
 			wHeld = false;
-			dir -= Vector2::up;
-			OnMovementKeyPressed(dir);
-			OnMovementKeyReleased();
+			OnMovementKeyReleased(Vector2::up);
 			break;
 		case SDL_SCANCODE_A:
 			aHeld = false;
-			dir -= Vector2::left;
-			OnMovementKeyPressed(dir);
-			OnMovementKeyReleased();
+			OnMovementKeyReleased(Vector2::left);
 			break;
 		case SDL_SCANCODE_S:
 			sHeld = false;
-			dir -= Vector2::down;
-			OnMovementKeyPressed(dir);
-			OnMovementKeyReleased();
+			OnMovementKeyReleased(Vector2::down);
 			break;
 		case SDL_SCANCODE_D:
 			dHeld = false;
-			dir -= Vector2::right;
-			OnMovementKeyPressed(dir);
-			OnMovementKeyReleased();
+			OnMovementKeyReleased(Vector2::right);
 			break;
 		case SDL_SCANCODE_SPACE:
 			OnDodgeReleased();
@@ -113,18 +101,25 @@ void PlayerInputComponent::UpdateInput(SDL_Event& e)
 	//std::cout << dir << std::endl;
 }
 
-void PlayerInputComponent::OnMovementKeyPressed(Vector2 dir)
+void PlayerInputComponent::OnMovementKeyPressed(Vector2 _dir)
 {
+	dir += _dir;
 	player->Move(dir);
 }
 
-void PlayerInputComponent::OnMovementKeyReleased()
+void PlayerInputComponent::OnMovementKeyReleased(Vector2 _dir)
 {
+	dir -= _dir;
+
 	// only stop moving if we aren't holding any movement keys still
 	// maybe change to check for dir == 0?
 	if (!wHeld && !aHeld && !sHeld && !dHeld)
 	{
 		player->StopMoving();
+	}
+	else
+	{
+		player->Move(dir);
 	}
 }
 

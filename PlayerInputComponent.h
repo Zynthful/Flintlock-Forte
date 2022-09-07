@@ -15,7 +15,7 @@ public:
 	void UpdateInput(SDL_Event& e);
 
 	void OnMovementKeyPressed(Vector2 dir);
-	void OnMovementKeyReleased();
+	void OnMovementKeyReleased(Vector2 dir);
 	void OnAttackPressed();
 	void OnAttackReleased();
 	void OnDeflectPressed();
