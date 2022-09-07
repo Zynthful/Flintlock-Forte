@@ -30,24 +30,32 @@ void PlayerInputComponent::UpdateInput(SDL_Event& e)
 		{
 			// Movement
 		case SDL_SCANCODE_W:
+			if (wHeld)
+				break;
 			wHeld = true;
 			dir += Vector2::up;
-			OnMovementPressed(dir);
+			OnMovementKeyPressed(dir);
 			break;
 		case SDL_SCANCODE_A:
+			if (aHeld)
+				break;
 			aHeld = true;
 			dir += Vector2::left;
-			OnMovementPressed(dir);
+			OnMovementKeyPressed(dir);
 			break;
 		case SDL_SCANCODE_S:
+			if (sHeld)
+				break;
 			sHeld = true;
 			dir += Vector2::down;
-			OnMovementPressed(dir);
+			OnMovementKeyPressed(dir);
 			break;
 		case SDL_SCANCODE_D:
+			if (dHeld)
+				break;
 			dHeld = true;
 			dir += Vector2::right;
-			OnMovementPressed(dir);
+			OnMovementKeyPressed(dir);
 			break;
 			// Actions
 		case SDL_SCANCODE_SPACE:
@@ -65,36 +73,28 @@ void PlayerInputComponent::UpdateInput(SDL_Event& e)
 		{
 			// Movement
 		case SDL_SCANCODE_W:
-			dir -= Vector2::up;
 			wHeld = false;
-			if (!wHeld && !aHeld && !sHeld && !dHeld)
-			{
-				OnMovementReleased();
-			}
+			dir -= Vector2::up;
+			OnMovementKeyPressed(dir);
+			OnMovementKeyReleased();
 			break;
 		case SDL_SCANCODE_A:
-			dir -= Vector2::left;
 			aHeld = false;
-			if (!wHeld && !aHeld && !sHeld && !dHeld)
-			{
-				OnMovementReleased();
-			}
+			dir -= Vector2::left;
+			OnMovementKeyPressed(dir);
+			OnMovementKeyReleased();
 			break;
 		case SDL_SCANCODE_S:
 			sHeld = false;
 			dir -= Vector2::down;
-			if (!wHeld && !aHeld && !sHeld && !dHeld)
-			{
-				OnMovementReleased();
-			}
+			OnMovementKeyPressed(dir);
+			OnMovementKeyReleased();
 			break;
 		case SDL_SCANCODE_D:
 			dHeld = false;
 			dir -= Vector2::right;
-			if (!wHeld && !aHeld && !sHeld && !dHeld)
-			{
-				OnMovementReleased();
-			}
+			OnMovementKeyPressed(dir);
+			OnMovementKeyReleased();
 			break;
 		case SDL_SCANCODE_SPACE:
 			OnDodgeReleased();
@@ -113,14 +113,19 @@ void PlayerInputComponent::UpdateInput(SDL_Event& e)
 	//std::cout << dir << std::endl;
 }
 
-void PlayerInputComponent::OnMovementPressed(Vector2 dir)
+void PlayerInputComponent::OnMovementKeyPressed(Vector2 dir)
 {
 	player->Move(dir);
 }
 
-void PlayerInputComponent::OnMovementReleased()
+void PlayerInputComponent::OnMovementKeyReleased()
 {
-	player->StopMoving();
+	// only stop moving if we aren't holding any movement keys still
+	// maybe change to check for dir == 0?
+	if (!wHeld && !aHeld && !sHeld && !dHeld)
+	{
+		player->StopMoving();
+	}
 }
 
 void PlayerInputComponent::OnAttackPressed()

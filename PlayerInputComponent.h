@@ -14,8 +14,8 @@ public:
 
 	void UpdateInput(SDL_Event& e);
 
-	void OnMovementPressed(Vector2 dir);
-	void OnMovementReleased();
+	void OnMovementKeyPressed(Vector2 dir);
+	void OnMovementKeyReleased();
 	void OnAttackPressed();
 	void OnAttackReleased();
 	void OnDeflectPressed();
@@ -36,8 +36,8 @@ private:
 	SDL_Scancode lastKeyPressed = SDL_Scancode::SDL_NUM_SCANCODES;
 
 	Vector2 dir = Vector2(0, 0);
-	bool wHeld;
-	bool aHeld;
-	bool sHeld;
-	bool dHeld;
+	bool wHeld = false;
+	bool aHeld = false;
+	bool sHeld = false;
+	bool dHeld = false;
 };
