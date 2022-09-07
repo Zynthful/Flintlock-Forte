@@ -30,6 +30,8 @@ public:
 	Vector2& operator-=(const Vector2& rhs);
 	Vector2& operator*=(float rhs);
 	Vector2& operator/=(float rhs);
+	bool operator==(const Vector2& rhs);
+	bool operator!=(const Vector2& rhs);
 
 private:
 	float x;
@@ -41,7 +43,6 @@ public:
 	const static Vector2 right;
 	const static Vector2 left;
 	const static Vector2 zero;
-
 };
 
 // Global operator overloads

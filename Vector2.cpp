@@ -106,6 +106,16 @@ Vector2& Vector2::operator/=(float rhs)
 	return *this;
 }
 
+bool Vector2::operator==(const Vector2& rhs)
+{
+	return x == rhs.x && y == rhs.y;
+}
+
+bool Vector2::operator!=(const Vector2& rhs)
+{
+	return !(*this == rhs);
+}
+
 std::ostream& operator<<(std::ostream& ostream, const Vector2& rhs)
 {
 	return ostream << "(" << rhs.GetX() << ", " << rhs.GetY() << ")";

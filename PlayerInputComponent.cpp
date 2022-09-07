@@ -111,12 +111,12 @@ void PlayerInputComponent::OnMovementKeyReleased(Vector2 _dir)
 {
 	dir -= _dir;
 
-	// only stop moving if we aren't holding any movement keys still
-	// maybe change to check for dir == 0?
-	if (!wHeld && !aHeld && !sHeld && !dHeld)
+	// only stop moving if our input isn't in any given direction
+	if (dir == Vector2::zero)
 	{
 		player->StopMoving();
 	}
+	// otherwise continue moving in current direction
 	else
 	{
 		player->Move(dir);
