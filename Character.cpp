@@ -4,7 +4,6 @@ Character::Character(SDL_Renderer* renderer)
 {
 	sprite = new Sprite(renderer, "assets/PlayerSprite.png");
 	sprite->SetPosition(position);
-	//velComp = AddComponent<VelocityComponent>();
 }
 
 Character::~Character()

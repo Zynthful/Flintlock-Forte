@@ -33,8 +33,8 @@ protected:
 	Sprite* sprite;
 
 	// Movement Settings
-	float speed = 3;
+	int speed = 7;
 
-	VelocityComponent* velComp = &AddComponent<VelocityComponent>();
+	VelocityComponent* velComp = &AddComponent<VelocityComponent>(speed);
 
 };

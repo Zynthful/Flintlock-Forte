@@ -1,11 +1,9 @@
 #include "VelocityComponent.h"
 #include "GameObject.h"
 
-
-
-VelocityComponent::VelocityComponent()
+VelocityComponent::VelocityComponent(int& _maxSpeed)
+	: maxSpeed(_maxSpeed)
 {
-	std::cout << "CONSTRUCT VEL COMP" << std::endl;
 }
 
 /// <summary>
@@ -32,19 +30,19 @@ void VelocityComponent::Update()
 	// handle accel/decel
 	if (destinationVel.RelativeMagnitude() != 0)
 	{
-		velocity += destinationVel * acceleration;
-
-		// then clamp to speed, somehow?
+		velocity += destinationVel.Normalized() * acceleration;
+		velocity = MathUtils::ClampVector2Magnitude(velocity, 0, maxSpeed);
 	}
 	else if (velocity.RelativeMagnitude() != 0)
 	{
-		velocity -= velocity * deceleration;
-
-		// then clamp to 0, somehow?
+		velocity -= (velocity.Normalized() * deceleration);
+		velocity = MathUtils::ClampVector2Magnitude(velocity, 0, maxSpeed);
 	}
 
 	// move owning object
 	Vector2 newPos = owner->GetPosition();
+	Vector2 prevPos = newPos;
 	newPos += velocity;
 	owner->SetPosition(newPos);
+	std::cout << "new pos: " << newPos << ", " << "diff: " << newPos - prevPos << std::endl;
 }

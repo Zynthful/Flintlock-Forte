@@ -28,9 +28,11 @@
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerInputComponent.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="TiledMap.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="VelocityComponent.cpp" />
   </ItemGroup>
@@ -44,9 +46,11 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameLoop.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="MathUtils.h" />
     <ClInclude Include="PlayerInputComponent.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="TiledMap.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="VelocityComponent.h" />
   </ItemGroup>

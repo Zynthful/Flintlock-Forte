@@ -1,11 +1,12 @@
 #pragma once
 #include "Component.h"
 #include "Vector2.h"
+#include "MathUtils.h"
 
 class VelocityComponent : public Component
 {
 public:
-	VelocityComponent();
+	VelocityComponent(int& maxSpeed);
 
 	Vector2 GetVelocity() { return velocity; }
 
@@ -16,9 +17,10 @@ public:
 
 private:
 	Vector2 velocity;
-	float acceleration = 1;
-	float deceleration = 1;
+	float acceleration = 2;
+	float deceleration = 2;
 
 	Vector2 destinationVel;
 
+	int& maxSpeed;
 };
