@@ -40,6 +40,7 @@ public:
 	const static Vector2 down;
 	const static Vector2 right;
 	const static Vector2 left;
+	const static Vector2 zero;
 
 };
 

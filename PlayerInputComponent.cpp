@@ -4,6 +4,7 @@
 PlayerInputComponent::PlayerInputComponent(Player* _player)
 	: player(_player)
 {
+	//player = static_cast<Character*>(GetOwner());
 }
 
 PlayerInputComponent::~PlayerInputComponent()
@@ -23,22 +24,30 @@ void PlayerInputComponent::UpdateInput(SDL_Event& e)
 
 		// assign last key pressed to the key pressed
 		lastKeyPressed = e.key.keysym.scancode;
+		
 
 		switch (e.key.keysym.scancode)
 		{
 			// Movement
 		case SDL_SCANCODE_W:
-			OnMovementPressed(Vector2(0, 1));
-			return;
-			// break yourself
+			wHeld = true;
+			dir += Vector2::up;
+			OnMovementPressed(dir);
+			break;
 		case SDL_SCANCODE_A:
-			OnMovementPressed(Vector2(-1, 0));
+			aHeld = true;
+			dir += Vector2::left;
+			OnMovementPressed(dir);
 			break;
 		case SDL_SCANCODE_S:
-			OnMovementPressed(Vector2(0, -1));
+			sHeld = true;
+			dir += Vector2::down;
+			OnMovementPressed(dir);
 			break;
 		case SDL_SCANCODE_D:
-			OnMovementPressed(Vector2(1, 0));
+			dHeld = true;
+			dir += Vector2::right;
+			OnMovementPressed(dir);
 			break;
 			// Actions
 		case SDL_SCANCODE_SPACE:
@@ -56,16 +65,36 @@ void PlayerInputComponent::UpdateInput(SDL_Event& e)
 		{
 			// Movement
 		case SDL_SCANCODE_W:
-			OnMovementReleased(Vector2(0, 1));
+			dir -= Vector2::up;
+			wHeld = false;
+			if (!wHeld && !aHeld && !sHeld && !dHeld)
+			{
+				OnMovementReleased();
+			}
 			break;
 		case SDL_SCANCODE_A:
-			OnMovementReleased(Vector2(-1, 0));
+			dir -= Vector2::left;
+			aHeld = false;
+			if (!wHeld && !aHeld && !sHeld && !dHeld)
+			{
+				OnMovementReleased();
+			}
 			break;
 		case SDL_SCANCODE_S:
-			OnMovementReleased(Vector2(0, -1));
+			sHeld = false;
+			dir -= Vector2::down;
+			if (!wHeld && !aHeld && !sHeld && !dHeld)
+			{
+				OnMovementReleased();
+			}
 			break;
 		case SDL_SCANCODE_D:
-			OnMovementReleased(Vector2(1, 0));
+			dHeld = false;
+			dir -= Vector2::right;
+			if (!wHeld && !aHeld && !sHeld && !dHeld)
+			{
+				OnMovementReleased();
+			}
 			break;
 		case SDL_SCANCODE_SPACE:
 			OnDodgeReleased();
@@ -80,6 +109,8 @@ void PlayerInputComponent::UpdateInput(SDL_Event& e)
 		OnAttackReleased();
 		break;
 	}
+
+	//std::cout << dir << std::endl;
 }
 
 void PlayerInputComponent::OnMovementPressed(Vector2 dir)
@@ -87,7 +118,7 @@ void PlayerInputComponent::OnMovementPressed(Vector2 dir)
 	player->Move(dir);
 }
 
-void PlayerInputComponent::OnMovementReleased(Vector2 dir)
+void PlayerInputComponent::OnMovementReleased()
 {
 	player->StopMoving();
 }
