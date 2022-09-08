@@ -5,7 +5,11 @@ Projectile::Projectile(SDL_Renderer* _renderer, const char* _spritePath, Vector2
 	SetPosition(_pos);
 
 	sprite = &AddComponent<Sprite>(_renderer, _spritePath);
-	collider = &AddComponent<ColliderComponent2D>(sprite);
+
+	// Setup collider
+	collider = &AddComponent<ColliderComponent2D>(3, sprite);
+	//collider->onBeginOverlap.AddRaw(this, &Projectile::OnBeginOverlap);
+
 	velComp = &AddComponent<VelocityComponent>(maxSpeed, acceleration, deceleration);
 	
 	velComp->StartAcceleratingTowards(_dir);
@@ -15,4 +19,14 @@ Projectile::~Projectile()
 {
 	delete collider;
 	delete sprite;
+}
+
+void Projectile::OnBeginOverlap(ColliderComponent2D* collider)
+{
+	// check for enemy layer
+	if (collider->GetLayer() == 2)
+	{
+		// damage enemy
+		// kill bullet
+	}
 }

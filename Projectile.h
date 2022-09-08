@@ -17,5 +17,7 @@ private:
 	float maxSpeed = 20.0f;
 	float acceleration = 30.0f;
 	float deceleration = 30.0f;
+
+	void OnBeginOverlap(ColliderComponent2D* collider);
 };
 

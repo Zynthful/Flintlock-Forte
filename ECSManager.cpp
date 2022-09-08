@@ -40,6 +40,8 @@ void ECSManager::RegisterGameObject(GameObject* obj)
 
 void ECSManager::RegisterCollider(ColliderComponent2D* colliderComp)
 {
-	std::unique_ptr<ColliderComponent2D> uPtr{ colliderComp };
-	colliderComps.emplace_back(std::move(uPtr));
+	//std::unique_ptr<ColliderComponent2D> uPtr{ colliderComp };
+	//colliderComps.emplace_back(std::move(uPtr));
+
+	colliderComps.emplace_back(colliderComp);	// append component to end of vector
 }

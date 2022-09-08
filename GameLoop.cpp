@@ -77,11 +77,11 @@ bool GameLoop::Update()
 			//std::cout << "Comparing " << i << " against " << j << std::endl;
 			if (SDL_HasIntersection(colliders[i]->GetRect(), colliders[j]->GetRect()))
 			{
-				colliders[i]->OnBeginOverlap();
+				colliders[i]->OnBeginOverlap(colliders[j]);
 			}
 			else
 			{
-				colliders[i]->OnEndOverlap();
+				colliders[i]->OnEndOverlap(colliders[j]);
 			}
 		}
 	}

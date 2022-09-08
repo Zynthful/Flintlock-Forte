@@ -26,7 +26,6 @@ public:
 
 private:
 	PlayerInputComponent* input;
-	ColliderComponent2D* collider;
 
 	Vector2 bulSpawnOffset = Vector2(100, -50);
 	const char* bulSpritePath = "assets/Projectile/FlintlockBullet.png";

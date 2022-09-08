@@ -9,7 +9,6 @@ Player::Player(SDL_Renderer* _renderer, const char* _spritePath)
 Player::~Player()
 {
 	delete input;
-	delete collider;
 }
 
 void Player::Attack(Vector2 dir)

@@ -7,11 +7,11 @@ class ColliderComponent2D : public Component
 {
 public:
 	// create collider rect directly using a rect
-	ColliderComponent2D(SDL_Rect* rect);
+	ColliderComponent2D(int _layer, SDL_Rect* rect);
 	// create collider rect from position and width/height values
-	ColliderComponent2D(int _x, int _y, int _w, int _h);
+	ColliderComponent2D(int _layer, int _x, int _y, int _w, int _h);
 	// create collider rect from sprite, using sprite rect as collider bounds
-	ColliderComponent2D(Sprite* sprite);
+	ColliderComponent2D(int _layer, Sprite* sprite);
 
 	~ColliderComponent2D();
 
@@ -19,10 +19,23 @@ public:
 	SDL_Rect* GetRect() { return collider; }
 	void SetRect(SDL_Rect* value) { collider = value; }
 
+	int GetLayer() { return layer; }
+	void SetLayer(int value) { layer = value; }
+
 public:
-	void OnBeginOverlap();
-	void OnEndOverlap();
-	void OnOverlapStay();
+	//void OnBeginOverlap(
+	//	std::unique_ptr<ColliderComponent2D>& collider);
+	//void OnEndOverlap(
+	//	std::unique_ptr<ColliderComponent2D>& collider);
+	//void OnOverlapStay(
+	//	std::unique_ptr<ColliderComponent2D>& collider);
+
+	void OnBeginOverlap(ColliderComponent2D* collider);
+	void OnEndOverlap(ColliderComponent2D* collider);
+	void OnOverlapStay(ColliderComponent2D* collider);
+
+	// Delegates
+public:
 
 private:
 	SDL_Rect* collider = new SDL_Rect();

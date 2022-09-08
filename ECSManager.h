@@ -10,7 +10,7 @@ public:
 	void Refresh();
 
 public:
-	std::vector<std::unique_ptr<ColliderComponent2D>>&
+	std::vector<ColliderComponent2D*>&
 		GetColliderComponents() { return colliderComps; }
 
 	std::vector<std::unique_ptr<GameObject>>&
@@ -23,5 +23,5 @@ public:
 
 private:
 	std::vector<std::unique_ptr<GameObject>> gameObjects;
-	std::vector<std::unique_ptr<ColliderComponent2D>> colliderComps;
+	std::vector<ColliderComponent2D*> colliderComps;
 };

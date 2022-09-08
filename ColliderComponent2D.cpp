@@ -1,13 +1,15 @@
 #include "ColliderComponent2D.h"
 #include "GameLoop.h"
 
-ColliderComponent2D::ColliderComponent2D(SDL_Rect* rect)
+ColliderComponent2D::ColliderComponent2D(int _layer, SDL_Rect* rect)
+	: layer(_layer)
 {
 	GameLoop::GetECSManager()->RegisterCollider(this);
 	collider = rect;
 }
 
-ColliderComponent2D::ColliderComponent2D(int _x, int _y, int _w, int _h)
+ColliderComponent2D::ColliderComponent2D(int _layer, int _x, int _y, int _w, int _h)
+	: layer(_layer)
 {
 	collider->x = _x;
 	collider->y = _y;
@@ -15,7 +17,8 @@ ColliderComponent2D::ColliderComponent2D(int _x, int _y, int _w, int _h)
 	collider->h = _h;
 }
 
-ColliderComponent2D::ColliderComponent2D(Sprite* sprite)
+ColliderComponent2D::ColliderComponent2D(int _layer,  Sprite* sprite)
+	: layer(_layer)
 {
 	collider = sprite->GetRect();
 }
@@ -25,17 +28,17 @@ ColliderComponent2D::~ColliderComponent2D()
 
 }
 
-void ColliderComponent2D::OnBeginOverlap()
+void ColliderComponent2D::OnBeginOverlap(ColliderComponent2D* collider)
 {
-
+	//onBeginOverlap.Broadcast(collider);
 }
 
-void ColliderComponent2D::OnEndOverlap()
+void ColliderComponent2D::OnEndOverlap(ColliderComponent2D* collider)
 {
-
+	//onEndOverlap.Broadcast(collider);
 }
 
-void ColliderComponent2D::OnOverlapStay()
+void ColliderComponent2D::OnOverlapStay(ColliderComponent2D* collider)
 {
-
+	//onOverlapStay.Broadcast(collider);
 }
