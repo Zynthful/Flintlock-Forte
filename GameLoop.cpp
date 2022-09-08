@@ -33,9 +33,14 @@ void GameLoop::Initialise()
 
 void GameLoop::LoadContent()
 {
+	shipBase = new GameObject();
+	shipBase->SetScale(2.3f, 2.3f);
+	shipBase->SetPosition(-100, -100);
+	shipBase->AddComponent<Sprite>(renderer, "assets/Terrain/Ship/ship_base.png");
+
 	player = new Player(renderer, "assets/Character/Player/idle.png", new SpriteAnimInfo(4, 200, 200, 145, 16));
 	enemy = new Enemy(renderer, "assets/Character/Enemy/idle_0.png");
-	map = new TiledMap(renderer, "assets/Terrain/Ship/lpc-ship.png");
+	map = new TiledMap(renderer, "assets/Terrain/Ship/ship_32x32_32x32.png");
 }
 
 bool GameLoop::Update()

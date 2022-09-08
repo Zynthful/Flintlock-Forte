@@ -6,22 +6,40 @@
 #include <list>
 #include <iostream>
 
-
-const int mapWidth = 10;
-const int mapHeight = 4;
-const int map[mapHeight][mapWidth] = {
-	{5, 6, 6, 6, 6, 6, 6, 6, 6, 7},
-	{19, 20, 20, 20, 20, 20, 20, 20, 20, 21},
-	{19, 20, 20, 20, 20, 20, 20, 20, 20, 21},
-	{1, 20, 20, 20, 20, 20, 20, 20, 20, 2}
+// note: this assumes all tiles are equal size
+const int mapWidth = 40;	// how many columns of tiles
+const int mapHeight = 18;	// how many rows of tiles
+const int map[mapHeight][mapWidth] =
+{
+	// enter map tile data here
+	// fml
+	{576, 579, 54, 54},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
+	{},
 };
 
-struct Tile {
+struct Tile
+{
 	SDL_Rect sourceRect;		// rect info about the source tile in the tilemap image
 	SDL_Rect destinationRect;	// where to render the source tile
 };
 
-class TiledMap {
+class TiledMap
+{
 public:
 	TiledMap(SDL_Renderer* sdlRenderer,
 		std::string tiledMapFilename);

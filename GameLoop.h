@@ -37,6 +37,8 @@ private:
 	SDL_Renderer* renderer;
 
 	TiledMap* map;
+
+	GameObject* shipBase = nullptr;
 	
 	// Game logic
 	double deltaTime = 0;

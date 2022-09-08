@@ -30,15 +30,15 @@ void Sprite::Render()
 	SDL_Rect* sourceRectangle;
 	if (animInfo == nullptr)
 	{
-		destinationRectangle.w = surface->w;
-		destinationRectangle.h = surface->h;
+		destinationRectangle.w = surface->w * GetOwner()->GetScale().GetX();
+		destinationRectangle.h = surface->h * GetOwner()->GetScale().GetY();
 
 		sourceRectangle = NULL;
 	}
 	else
 	{
-		destinationRectangle.w = animInfo->pxWidth;
-		destinationRectangle.h = animInfo->pxHeight;
+		destinationRectangle.w = animInfo->pxWidth * GetOwner()->GetScale().GetX();
+		destinationRectangle.h = animInfo->pxHeight * GetOwner()->GetScale().GetY();
 
 		sourceRectangle = new SDL_Rect();
 		sourceRectangle->w = animInfo->pxWidth;
