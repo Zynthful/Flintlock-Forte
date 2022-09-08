@@ -93,12 +93,12 @@ bool GameLoop::Update()
 
 void GameLoop::Render()
 {
-
 	// Change the background colour here
 	SDL_SetRenderDrawColor(renderer, 60, 60, 60, 0);
 	SDL_RenderClear(renderer);
 
 	// Render any other object here.
+	ecsManager->Render();
 	map->Render();
 	player->GetSprite()->Render();
 

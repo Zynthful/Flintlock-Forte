@@ -24,16 +24,11 @@ void Sprite::Render()
 	SDL_Rect* sourceRectangle = NULL;
 
 	SDL_Rect destinationRectangle;
-	destinationRectangle.x = position.GetX();
-	destinationRectangle.y = -position.GetY();
-	destinationRectangle.w = 300;
-	destinationRectangle.h = 300;
+	destinationRectangle.x = GetOwner()->GetPosition().GetX();
+	destinationRectangle.y = -GetOwner()->GetPosition().GetY();
+	destinationRectangle.w = surface->w;
+	destinationRectangle.h = surface->h;
 	SDL_RenderCopy(renderer, texture, sourceRectangle, &destinationRectangle);
-}
-
-void Sprite::SetPosition(Vector2 _position)
-{
-	position = _position;
 }
 
 SDL_Rect* Sprite::GetRect()
@@ -41,7 +36,7 @@ SDL_Rect* Sprite::GetRect()
 	SDL_Rect* rect = new SDL_Rect();
 	rect->w = surface->w;
 	rect->h = surface->h;
-	rect->x = position.GetX();
-	rect->y = position.GetY();
+	rect->x = GetOwner()->GetPosition().GetX();
+	rect->y = GetOwner()->GetPosition().GetY();
 	return rect;
 }

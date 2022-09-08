@@ -21,7 +21,7 @@ public:
 
 	// Sprite
 	Sprite* GetSprite() { return sprite; }
-	void SetSprite(Sprite* value);
+	void SetSprite(Sprite* value) { sprite = value; }
 
 	// Movement
 	float GetSpeed() { return speed; }

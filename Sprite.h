@@ -3,8 +3,10 @@
 #include<SDL.h>
 #include<SDL_image.h>
 #include "Vector2.h"
+#include "Component.h"
+#include "GameObject.h"
 
-class Sprite
+class Sprite : public Component
 {
 public:
 	Sprite(SDL_Renderer* _renderer, const char* _path);
@@ -12,14 +14,10 @@ public:
 	
 public:
 	void Render();
-
-	void SetPosition(Vector2 _position);
 	
 	SDL_Rect* GetRect();
 
 private:
-	Vector2 position;
-
 	SDL_Surface* surface;
 	SDL_Texture* texture;
 	SDL_Renderer* renderer;
