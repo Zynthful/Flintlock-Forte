@@ -35,8 +35,17 @@ void VelocityComponent::Update()
 	}
 	else if (velocity.RelativeMagnitude() != 0)
 	{
+		Vector2 prevVel = velocity;
 		velocity -= (velocity.Normalized() * deceleration);
 		velocity = MathUtils::ClampVector2Magnitude(velocity, 0, maxSpeed);
+		if ((velocity.GetX() < 0 && prevVel.GetX() > 0) || (velocity.GetX() > 0 && prevVel.GetX() < 0))
+		{
+			velocity.SetX(0);
+		}
+		if ((velocity.GetY() < 0 && prevVel.GetY() > 0) || (velocity.GetY() > 0 && prevVel.GetY() < 0))
+		{
+			velocity.SetY(0);
+		}
 	}
 
 	// move owning object
