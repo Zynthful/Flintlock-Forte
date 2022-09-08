@@ -13,6 +13,8 @@ GameObject::~GameObject()
 
 void GameObject::Update(double deltaTime)
 {
+	// todo: make this get called from ecs manager?
+	// means that if GameObject::Update isn't called from child classes, components won't be updated
 	for (auto& c : components) c->Update(deltaTime);
 }
 

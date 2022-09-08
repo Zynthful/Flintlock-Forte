@@ -10,6 +10,11 @@ public:
 
 	Vector2 GetVelocity() { return velocity; }
 
+	float GetAcceleration() { return acceleration; }
+	void SetAcceleration(float value) { acceleration = value; }
+	float GetDeceleration() { return deceleration; }
+	void SetDeceleration(float value) { deceleration = value; }
+
 	void StartAcceleratingTowards(Vector2 dir);
 	void StartDecelerating();
 

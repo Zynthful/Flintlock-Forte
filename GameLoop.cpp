@@ -44,6 +44,7 @@ void GameLoop::LoadContent()
 
 	player = new Player(renderer, "assets/Character/Player/idle.png", new SpriteAnimInfo(4, 200, 200, 145, 16));
 	enemy = new Enemy(renderer, "assets/Character/Enemy/idle_0.png");
+	enemy->SetTarget(player);
 	map = new TiledMap(renderer, "assets/Terrain/Ship/ship_32x32_32x32.png");
 }
 
@@ -122,6 +123,7 @@ void GameLoop::Render()
 void GameLoop::UnloadContent()
 {
 	delete player;
+	delete enemy;
 	delete map;
 	delete ocean;
 	delete shipBase;

@@ -44,9 +44,16 @@ void Vector2::SetY(float _y)
 
 Vector2 Vector2::Normalized()
 {
-	float k = 1 / Magnitude();
-	Vector2 result = Vector2(k * x, k * y);
-	return result;
+	float magnitude = Magnitude();
+	if (magnitude == 0)
+	{
+		return Vector2(0, 0);
+	}
+	else
+	{
+		float k = 1 / magnitude;
+		return Vector2(k * x, k * y);
+	}
 }
 
 float Vector2::Magnitude()
