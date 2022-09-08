@@ -3,7 +3,6 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-class HealthComponent;
 class Sprite;
 class VelocityComponent;
 struct SpriteAnimInfo;
