@@ -1,6 +1,8 @@
 #pragma once
-#include "GameObject.h"
+#include <vector>
+#include <memory>
 
+class GameObject;
 class ColliderComponent2D;
 
 class ECSManager

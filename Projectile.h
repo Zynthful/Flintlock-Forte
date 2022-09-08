@@ -1,7 +1,8 @@
 #pragma once
 #include "GameObject.h"
-#include "ColliderComponent2D.h"
-#include "VelocityComponent.h"
+
+class ColliderComponent2D;
+class VelocityComponent;
 
 
 class Projectile : public GameObject

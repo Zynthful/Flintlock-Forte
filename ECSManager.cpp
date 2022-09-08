@@ -1,4 +1,5 @@
 #include "ECSManager.h"
+#include "GameObject.h"
 
 // calls Update on all gameObjects
 void ECSManager::Update(double deltaTime)
