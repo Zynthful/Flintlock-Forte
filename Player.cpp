@@ -20,7 +20,7 @@ Player::~Player()
 void Player::Attack(Vector2 dir)
 {
 	Vector2 bulSpawnPos = GetPosition() + bulSpawnOffset;
-	Projectile* bul = new Projectile(renderer, bulSpritePath, dir, bulSpawnPos);
+	Projectile* bul = new Projectile(renderer, bulSpritePath, dir, bulSpawnPos, 2);
 }
 
 void Player::Deflect()
