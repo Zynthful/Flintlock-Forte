@@ -34,6 +34,7 @@ void GameLoop::Initialise()
 void GameLoop::LoadContent()
 {
 	player = new Player(renderer, "assets/Character/Player/idle_0.png");
+	enemy = new Enemy(renderer, "assets/Character/Enemy/idle_0.png");
 
 	map = new TiledMap(renderer, "assets/Terrain/Ship/lpc-ship.png");
 }
@@ -98,9 +99,9 @@ void GameLoop::Render()
 	SDL_RenderClear(renderer);
 
 	// Render any other object here.
-	ecsManager->Render();
 	map->Render();
-	player->GetSprite()->Render();
+	ecsManager->Render();
+	//player->GetSprite()->Render();
 
 
 	SDL_RenderPresent(renderer);

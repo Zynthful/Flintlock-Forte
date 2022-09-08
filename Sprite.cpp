@@ -21,6 +21,8 @@ Sprite::~Sprite()
 
 void Sprite::Render()
 {
+	Component::Render();
+
 	SDL_Rect* sourceRectangle = NULL;
 
 	SDL_Rect destinationRectangle;

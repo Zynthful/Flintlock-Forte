@@ -14,12 +14,11 @@ GameObject::~GameObject()
 void GameObject::Update()
 {
 	for (auto& c : components) c->Update();
-	for (auto& c : components) c->Render();
-
 }
 
 void GameObject::Render()
 {
+	for (auto& c : components) c->Render();
 }
 
 void GameObject::Destroy()

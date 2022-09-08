@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "ECSManager.h"
 #include "TiledMap.h"
+#include "Enemy.h"
 
 class Player;
 
@@ -28,6 +29,8 @@ private:
 
 	// Game objects
 	Player* player;
+
+	Enemy* enemy;
 
 	// SDL pointers
 	SDL_Window* window;

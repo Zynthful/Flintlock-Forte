@@ -13,7 +13,7 @@ public:
 	~Sprite();
 	
 public:
-	void Render();
+	virtual void Render() override;
 	
 	SDL_Rect* GetRect();
 
