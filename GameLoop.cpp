@@ -68,23 +68,23 @@ bool GameLoop::Update()
 	// Check for collision against other colliders on that layer
 	// Invoke relevant events
 
-	//const int size = 4;
-	//SDL_Rect* colliders[size];
-	//for (int i = 0; i < size; i++)
-	//{
-	//	for (int j = i + 1; j < size; j++)
-	//	{
-	//		std::cout << "Comparing " << i << " against " << j << std::endl;
-	//		if (SDL_HasIntersection(colliders[i], colliders[j]))
-	//		{
-
-	//		}
-	//		else
-	//		{
-
-	//		}
-	//	}
-	//}
+	auto& colliders = ecsManager->GetColliderComponents();
+	for (int i = 0; i < colliders.size(); i++)
+	{
+		for (int j = i + 1; j < colliders.size(); j++)
+		{
+			// todo: make OnBegin and OnEnd not call every frame
+			//std::cout << "Comparing " << i << " against " << j << std::endl;
+			if (SDL_HasIntersection(colliders[i]->GetRect(), colliders[j]->GetRect()))
+			{
+				colliders[i]->OnBeginOverlap();
+			}
+			else
+			{
+				colliders[i]->OnEndOverlap();
+			}
+		}
+	}
 
 
 	return true;

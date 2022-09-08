@@ -92,6 +92,8 @@ void PlayerInputComponent::UpdateInput(SDL_Event& e)
 		break;
 	}
 	case SDL_MOUSEBUTTONDOWN:
+		int x, y;	// mouse pos
+		SDL_GetMouseState(&x, &y);
 		OnAttackPressed();
 		break;
 	case SDL_MOUSEBUTTONUP:

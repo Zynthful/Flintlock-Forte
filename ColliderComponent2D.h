@@ -16,6 +16,10 @@ public:
 	~ColliderComponent2D();
 
 public:
+	SDL_Rect* GetRect() { return collider; }
+	void SetRect(SDL_Rect* value) { collider = value; }
+
+public:
 	void OnBeginOverlap();
 	void OnEndOverlap();
 	void OnOverlapStay();

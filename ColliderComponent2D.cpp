@@ -1,7 +1,9 @@
 #include "ColliderComponent2D.h"
+#include "GameLoop.h"
 
 ColliderComponent2D::ColliderComponent2D(SDL_Rect* rect)
 {
+	GameLoop::GetECSManager()->RegisterCollider(this);
 	collider = rect;
 }
 

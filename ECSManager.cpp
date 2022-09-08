@@ -37,3 +37,9 @@ void ECSManager::RegisterGameObject(GameObject* obj)
 	std::unique_ptr<GameObject> uPtr { obj };
 	gameObjects.emplace_back(std::move(uPtr));
 }
+
+void ECSManager::RegisterCollider(ColliderComponent2D* colliderComp)
+{
+	std::unique_ptr<ColliderComponent2D> uPtr{ colliderComp };
+	colliderComps.emplace_back(std::move(uPtr));
+}
