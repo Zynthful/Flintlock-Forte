@@ -33,6 +33,10 @@ void GameLoop::Initialise()
 
 void GameLoop::LoadContent()
 {
+	ocean = new GameObject();
+	ocean->SetScale(2.5f, 2.5f);
+	ocean->AddComponent<Sprite>(renderer, "assets/Terrain/ocean.png");
+
 	shipBase = new GameObject();
 	shipBase->SetScale(2.3f, 2.3f);
 	shipBase->SetPosition(-100, -100);
@@ -119,6 +123,8 @@ void GameLoop::UnloadContent()
 {
 	delete player;
 	delete map;
+	delete ocean;
+	delete shipBase;
 }
 
 void GameLoop::Quit()

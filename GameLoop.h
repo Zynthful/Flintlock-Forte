@@ -39,6 +39,7 @@ private:
 	TiledMap* map;
 
 	GameObject* shipBase = nullptr;
+	GameObject* ocean = nullptr;
 	
 	// Game logic
 	double deltaTime = 0;
