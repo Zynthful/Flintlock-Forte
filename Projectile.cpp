@@ -36,10 +36,11 @@ void Projectile::OnOverlapStay(ColliderComponent2D* source, ColliderComponent2D*
 
 void Projectile::OnBeginOverlap(ColliderComponent2D* collider)
 {
-	// check for enemy layer
-	if (collider->GetLayer() == 2)
+	// check if the collider is of the layer we want to target
+	if (collider->GetLayer() == targetLayer)
 	{
-		// damage enemy
+		// get health component
+		// do damage if it exists
 		// kill bullet
 	}
 }

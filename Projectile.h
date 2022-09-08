@@ -27,6 +27,8 @@ private:
 	float acceleration = 30.0f;
 	float deceleration = 30.0f;
 
+	int targetLayer = 0;
+
 	void OnBeginOverlap(ColliderComponent2D* collider);
 };
 
