@@ -10,7 +10,7 @@ class Sprite;
 class Projectile : public GameObject
 {
 public:
-	Projectile(SDL_Renderer* _renderer, const char* _spritePath, Vector2 _dir, Vector2 _pos);
+	Projectile(SDL_Renderer* _renderer, const char* _spritePath, Vector2 _dir, Vector2 _pos, int _targetLayer = 0);
 	~Projectile();
 
 public:
@@ -31,4 +31,3 @@ private:
 
 	void OnBeginOverlap(ColliderComponent2D* collider);
 };
-
