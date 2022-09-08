@@ -2,15 +2,16 @@
 
 HealthComponent::HealthComponent()
 {
+	SetHealth(startingHealth);
 }
 
 HealthComponent::~HealthComponent()
 {
 }
 
-void HealthComponent::SetHealth(int value)
+float HealthComponent::SetHealth(int value)
 {
-	health = value;
+	health = MathUtils::Clamp(value, 0.0f, maxHealth);
 }
 
 void HealthComponent::SetMaxHealth(int value)
@@ -20,12 +21,18 @@ void HealthComponent::SetMaxHealth(int value)
 
 void HealthComponent::TakeDamage(int amount)
 {
+	SetHealth(health - amount);
 }
 
 void HealthComponent::Heal(int amount)
 {
+	SetHealth(health + amount);
 }
 
 void HealthComponent::Death()
 {
+	if (GetIsDead())
+		return;
+
+	SetHealth(0);
 }
