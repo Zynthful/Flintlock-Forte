@@ -14,8 +14,8 @@ private:
 	VelocityComponent* velComp = nullptr;
 	Sprite* sprite = nullptr;
 
-	float maxSpeed = 3.0f;
-	float acceleration = 3.0f;
-	float deceleration = 3.0f;
+	float maxSpeed = 20.0f;
+	float acceleration = 30.0f;
+	float deceleration = 30.0f;
 };
 

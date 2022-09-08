@@ -95,20 +95,17 @@ void PlayerInputComponent::UpdateInput(SDL_Event& e)
 	{
 		int x, y;	// mouse pos
 		SDL_GetMouseState(&x, &y);
-		OnAttackPressed(x, -y);
+		OnAttackPressed(x, -y);	// use -y because 0,0 is top left of the screen
 	}
 		break;
 	case SDL_MOUSEBUTTONUP:
 		OnAttackReleased();
 		break;
 	}
-
-	//std::cout << dir << std::endl;
 }
 
 void PlayerInputComponent::OnMovementKeyPressed(Vector2 _dir)
 {
-	// maybe check dir == _dir instead of checking for keys held?
 	dir += _dir;
 	player->Move(dir);
 }

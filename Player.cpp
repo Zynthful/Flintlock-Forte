@@ -14,7 +14,8 @@ Player::~Player()
 
 void Player::Attack(Vector2 dir)
 {
-	Projectile* bul = new Projectile(renderer, "assets/Projectile/FlintlockBullet.png", dir, GetPosition());
+	Vector2 bulSpawnPos = GetPosition() + bulSpawnOffset;
+	Projectile* bul = new Projectile(renderer, bulSpritePath, dir, bulSpawnPos);
 }
 
 void Player::Deflect()
