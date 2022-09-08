@@ -1,8 +1,9 @@
 #include "Character.h"
 
-Character::Character(SDL_Renderer* renderer, const char* spritePath)
+Character::Character(SDL_Renderer* _renderer, const char* _spritePath)
+	: renderer(_renderer)
 {
-	sprite = &AddComponent<Sprite>(renderer, spritePath);
+	sprite = &AddComponent<Sprite>(_renderer, _spritePath);
 }
 
 Character::~Character()

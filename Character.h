@@ -6,7 +6,7 @@
 class Character : public GameObject
 {
 public:
-	Character(SDL_Renderer* renderer, const char* spritePath);
+	Character(SDL_Renderer* _renderer, const char* _spritePath);
 	~Character();
 
 public:
@@ -39,4 +39,5 @@ protected:
 
 	VelocityComponent* velComp = &AddComponent<VelocityComponent>(speed, acceleration, deceleration);
 
+	SDL_Renderer* renderer;
 };

@@ -2,11 +2,12 @@
 #include "Character.h"
 #include "PlayerInputComponent.h"
 #include "ColliderComponent2D.h"
+#include "Projectile.h"
 
 class Player : public Character
 {
 public:
-	Player(SDL_Renderer* renderer, const char* spritePath);
+	Player(SDL_Renderer* _renderer, const char* _spritePath);
 	~Player();
 
 private:
@@ -15,7 +16,7 @@ private:
 
 public:
 	// Actions
-	void Attack();
+	void Attack(Vector2 dir);
 	void Deflect();
 	void Dodge();
 

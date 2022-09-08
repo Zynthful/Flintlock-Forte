@@ -16,7 +16,7 @@ public:
 
 	void OnMovementKeyPressed(Vector2 dir);
 	void OnMovementKeyReleased(Vector2 dir);
-	void OnAttackPressed();
+	void OnAttackPressed(int mouseX, int mouseY);
 	void OnAttackReleased();
 	void OnDeflectPressed();
 	void OnDeflectReleased();

@@ -92,9 +92,11 @@ void PlayerInputComponent::UpdateInput(SDL_Event& e)
 		break;
 	}
 	case SDL_MOUSEBUTTONDOWN:
+	{
 		int x, y;	// mouse pos
 		SDL_GetMouseState(&x, &y);
-		OnAttackPressed();
+		OnAttackPressed(x, -y);
+	}
 		break;
 	case SDL_MOUSEBUTTONUP:
 		OnAttackReleased();
@@ -127,8 +129,10 @@ void PlayerInputComponent::OnMovementKeyReleased(Vector2 _dir)
 	}
 }
 
-void PlayerInputComponent::OnAttackPressed()
+void PlayerInputComponent::OnAttackPressed(int mouseX, int mouseY)
 {
+	Vector2 attackDir = (Vector2(mouseX, mouseY) - player->GetPosition()).Normalized();
+	player->Attack(attackDir);
 }
 
 void PlayerInputComponent::OnAttackReleased()

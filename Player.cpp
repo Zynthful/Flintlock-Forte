@@ -1,7 +1,7 @@
 #include "Player.h"
 
-Player::Player(SDL_Renderer* renderer, const char* spritePath)
-	: Character(renderer, spritePath)
+Player::Player(SDL_Renderer* _renderer, const char* _spritePath)
+	: Character(_renderer, _spritePath)
 {
 	input = new PlayerInputComponent(this);
 }
@@ -12,8 +12,9 @@ Player::~Player()
 	delete collider;
 }
 
-void Player::Attack()
+void Player::Attack(Vector2 dir)
 {
+	Projectile* bul = new Projectile(renderer, "assets/Projectile/FlintlockBullet.png", dir, GetPosition());
 }
 
 void Player::Deflect()

@@ -31,6 +31,7 @@
     <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerInputComponent.cpp" />
+    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="TiledMap.cpp" />
     <ClCompile Include="Vector2.cpp" />
@@ -48,6 +49,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="MathUtils.h" />
     <ClInclude Include="PlayerInputComponent.h" />
+    <ClInclude Include="Projectile.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="TiledMap.h" />
