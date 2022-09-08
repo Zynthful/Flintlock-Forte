@@ -1,5 +1,6 @@
 #include "Character.h"
 #include "VelocityComponent.h"
+#include "Sprite.h"
 
 Character::Character(SDL_Renderer* _renderer, const char* _spritePath)
 	: renderer(_renderer)

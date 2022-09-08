@@ -1,8 +1,11 @@
 #pragma once
 #include "GameObject.h"
-#include "Sprite.h"
+#include <SDL.h>
+#include <SDL_image.h>
 
+class Sprite;
 class VelocityComponent;
+struct SpriteAnimInfo;
 
 class Character : public GameObject
 {
