@@ -26,15 +26,15 @@ void GameObject::Destroy()
 	SetActive(false);
 }
 
-void OnBeginOverlap(ColliderComponent2D* source, ColliderComponent2D* other)
+void GameObject::OnBeginOverlap(ColliderComponent2D* source, ColliderComponent2D* other)
 {
 }
 
-void OnEndOverlap(ColliderComponent2D* source, ColliderComponent2D* other)
+void GameObject::OnEndOverlap(ColliderComponent2D* source, ColliderComponent2D* other)
 {
 }
 
-void OnOverlapStay(ColliderComponent2D* source, ColliderComponent2D* other)
+void GameObject::OnOverlapStay(ColliderComponent2D* source, ColliderComponent2D* other)
 {
 }
 

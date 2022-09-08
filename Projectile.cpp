@@ -22,6 +22,18 @@ Projectile::~Projectile()
 	delete sprite;
 }
 
+void Projectile::OnBeginOverlap(ColliderComponent2D* source, ColliderComponent2D* other)
+{
+}
+
+void Projectile::OnEndOverlap(ColliderComponent2D* source, ColliderComponent2D* other)
+{
+}
+
+void Projectile::OnOverlapStay(ColliderComponent2D* source, ColliderComponent2D* other)
+{
+}
+
 void Projectile::OnBeginOverlap(ColliderComponent2D* collider)
 {
 	// check for enemy layer

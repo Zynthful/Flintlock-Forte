@@ -30,15 +30,15 @@ ColliderComponent2D::~ColliderComponent2D()
 
 void ColliderComponent2D::OnBeginOverlap(ColliderComponent2D* collider)
 {
-	//GetOwner()->OnBeginOverlap(this, collider);
+	GetOwner()->OnBeginOverlap(this, collider);
 }
 
 void ColliderComponent2D::OnEndOverlap(ColliderComponent2D* collider)
 {
-	//GetOwner()->OnEndOverlap(this, collider);
+	GetOwner()->OnEndOverlap(this, collider);
 }
 
 void ColliderComponent2D::OnOverlapStay(ColliderComponent2D* collider)
 {
-	//GetOwner()->OnOverlapStay(this, collider);
+	GetOwner()->OnOverlapStay(this, collider);
 }

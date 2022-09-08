@@ -22,9 +22,9 @@ public:
 	virtual void Render();
 	virtual void Destroy();
 	
-	//virtual void OnBeginOverlap(ColliderComponent2D* source, ColliderComponent2D* other);
-	//virtual void OnEndOverlap(ColliderComponent2D* source, ColliderComponent2D* other);
-	//virtual void OnOverlapStay(ColliderComponent2D* source, ColliderComponent2D* other);
+	virtual void OnBeginOverlap(ColliderComponent2D* source, ColliderComponent2D* other);
+	virtual void OnEndOverlap(ColliderComponent2D* source, ColliderComponent2D* other);
+	virtual void OnOverlapStay(ColliderComponent2D* source, ColliderComponent2D* other);
 
 	// Active getter/setter
 	bool GetActive() const;

@@ -13,6 +13,11 @@ public:
 	Projectile(SDL_Renderer* _renderer, const char* _spritePath, Vector2 _dir, Vector2 _pos);
 	~Projectile();
 
+public:
+	virtual void OnBeginOverlap(ColliderComponent2D* source, ColliderComponent2D* other) override;
+	virtual void OnEndOverlap(ColliderComponent2D* source, ColliderComponent2D* other) override;
+	virtual void OnOverlapStay(ColliderComponent2D* source, ColliderComponent2D* other) override;
+
 private:
 	ColliderComponent2D* collider = nullptr;
 	VelocityComponent* velComp = nullptr;
