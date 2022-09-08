@@ -4,6 +4,8 @@
 #include "ColliderComponent2D.h"
 #include "Projectile.h"
 
+class PlayerHealthComponent;
+
 class Player : public Character
 {
 public:
@@ -23,10 +25,12 @@ public:
 
 public:
 	// Getters/setters
-	PlayerInputComponent* GetInputComponent();
+	PlayerInputComponent* GetInputComponent() { return input; }
+	PlayerHealthComponent* GetHealthComponent() { return health; }
 
 private:
-	PlayerInputComponent* input;
+	PlayerInputComponent* input = nullptr;
+	PlayerHealthComponent* health = nullptr;
 
 	Vector2 bulSpawnOffset = Vector2(100, -50);
 	const char* bulSpritePath = "assets/Projectile/FlintlockBullet.png";
