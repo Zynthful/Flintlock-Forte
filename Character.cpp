@@ -1,8 +1,8 @@
 #include "Character.h"
 
-Character::Character(SDL_Renderer* renderer)
+Character::Character(SDL_Renderer* renderer, const char* spritePath)
 {
-	sprite = new Sprite(renderer, "assets/PlayerSprite.png");
+	sprite = new Sprite(renderer, spritePath);
 	sprite->SetPosition(position);
 }
 

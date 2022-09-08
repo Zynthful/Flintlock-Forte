@@ -6,7 +6,7 @@
 class Player : public Character
 {
 public:
-	Player(SDL_Renderer* renderer);
+	Player(SDL_Renderer* renderer, const char* spritePath);
 	~Player();
 
 private:

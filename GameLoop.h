@@ -6,6 +6,7 @@
 #include <iostream>
 #include "Player.h"
 #include "ECSManager.h"
+#include "TiledMap.h"
 
 class Player;
 
@@ -31,6 +32,8 @@ private:
 	// SDL pointers
 	SDL_Window* window;
 	SDL_Renderer* renderer;
+
+	TiledMap* map;
 	
 	// Game logic
 	double deltaTime = 0;

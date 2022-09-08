@@ -33,7 +33,9 @@ void GameLoop::Initialise()
 
 void GameLoop::LoadContent()
 {
-	player = new Player(renderer);
+	player = new Player(renderer, "assets/Character/Player/idle_0.png");
+
+	map = new TiledMap(renderer, "assets/Terrain/Ship/lpc-ship.png");
 }
 
 bool GameLoop::Update()
@@ -91,12 +93,15 @@ bool GameLoop::Update()
 
 void GameLoop::Render()
 {
+
 	// Change the background colour here
 	SDL_SetRenderDrawColor(renderer, 60, 60, 60, 0);
 	SDL_RenderClear(renderer);
 
 	// Render any other object here.
+	map->Render();
 	player->GetSprite()->Render();
+
 
 	SDL_RenderPresent(renderer);
 
@@ -106,6 +111,7 @@ void GameLoop::Render()
 void GameLoop::UnloadContent()
 {
 	delete player;
+	delete map;
 }
 
 void GameLoop::Quit()

@@ -6,7 +6,7 @@
 class Character : public GameObject
 {
 public:
-	Character(SDL_Renderer* renderer);
+	Character(SDL_Renderer* renderer, const char* spritePath);
 	~Character();
 
 public:

@@ -104,6 +104,7 @@ void PlayerInputComponent::UpdateInput(SDL_Event& e)
 
 void PlayerInputComponent::OnMovementKeyPressed(Vector2 _dir)
 {
+	// maybe check dir == _dir instead of checking for keys held?
 	dir += _dir;
 	player->Move(dir);
 }
