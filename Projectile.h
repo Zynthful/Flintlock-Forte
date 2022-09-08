@@ -1,9 +1,11 @@
 #pragma once
 #include "GameObject.h"
+#include <SDL.h>
+#include <SDL_image.h>
 
 class ColliderComponent2D;
 class VelocityComponent;
-
+class Sprite;
 
 class Projectile : public GameObject
 {

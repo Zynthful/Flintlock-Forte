@@ -1,7 +1,6 @@
 #pragma once
 #include "Vector2.h"
 #include "ECS.h"
-#include "ColliderComponent2D.h"
 
 class Component;
 class ColliderComponent2D;

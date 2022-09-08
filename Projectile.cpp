@@ -1,5 +1,6 @@
 #include "Projectile.h"
 #include "VelocityComponent.h"
+#include "ColliderComponent2D.h"
 
 Projectile::Projectile(SDL_Renderer* _renderer, const char* _spritePath, Vector2 _dir, Vector2 _pos)
 {
