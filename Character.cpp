@@ -3,7 +3,13 @@
 Character::Character(SDL_Renderer* _renderer, const char* _spritePath)
 	: renderer(_renderer)
 {
-	sprite = &AddComponent<Sprite>(_renderer, _spritePath, 4, 200, 200, 145, 16);
+	sprite = &AddComponent<Sprite>(_renderer, _spritePath);
+}
+
+Character::Character(SDL_Renderer* _renderer, const char* _spritePath, SpriteAnimInfo* _animInfo)
+	: renderer(_renderer)
+{
+	sprite = &AddComponent<Sprite>(_renderer, _spritePath, _animInfo);
 }
 
 Character::~Character()

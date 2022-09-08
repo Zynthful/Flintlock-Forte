@@ -7,6 +7,8 @@ class Character : public GameObject
 {
 public:
 	Character(SDL_Renderer* _renderer, const char* _spritePath);
+	Character(SDL_Renderer* _renderer, const char* _spritePath, SpriteAnimInfo* _animInfo);
+
 	~Character();
 
 public:

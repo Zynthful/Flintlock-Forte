@@ -6,6 +6,12 @@ Player::Player(SDL_Renderer* _renderer, const char* _spritePath)
 	input = new PlayerInputComponent(this);
 }
 
+Player::Player(SDL_Renderer* _renderer, const char* _spritePath, SpriteAnimInfo* _animInfo)
+	: Character(_renderer, _spritePath, _animInfo)
+{
+	input = new PlayerInputComponent(this);
+}
+
 Player::~Player()
 {
 	delete input;

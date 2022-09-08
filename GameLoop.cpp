@@ -33,9 +33,8 @@ void GameLoop::Initialise()
 
 void GameLoop::LoadContent()
 {
-	player = new Player(renderer, "assets/Character/Player/idle.png");
-	//enemy = new Enemy(renderer, "assets/Character/Enemy/idle_0.png");
-
+	player = new Player(renderer, "assets/Character/Player/idle.png", new SpriteAnimInfo(4, 200, 200, 145, 16));
+	enemy = new Enemy(renderer, "assets/Character/Enemy/idle_0.png");
 	map = new TiledMap(renderer, "assets/Terrain/Ship/lpc-ship.png");
 }
 
@@ -94,22 +93,20 @@ bool GameLoop::Update()
 	return true;
 }
 
-
-
 void GameLoop::Render()
 {
 	// Change the background colour here
 	SDL_SetRenderDrawColor(renderer, 60, 60, 60, 0);
 	SDL_RenderClear(renderer);
 
-	// Render any other object here.
+	// =================================
+	// RENDER OTHER OBJECTS HERE
+	// ORDER OF RENDERING MATTERS (later = renders on top)
 	map->Render();
 	ecsManager->Render();
-	//player->GetSprite()->Render();
 
-
+	// =================================
 	SDL_RenderPresent(renderer);
-
 }
 
 // Unload assets to release memory

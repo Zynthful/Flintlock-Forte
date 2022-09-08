@@ -6,18 +6,42 @@
 #include "Component.h"
 #include "GameObject.h"
 
+struct SpriteAnimInfo
+{
+	SpriteAnimInfo(int _numFrames, int _pxInterval, int _pxWidth, int _pxHeight, float _fps);
+
+	int currentFrameIndex;
+	double currentFrameTime;
+
+	int numFrames;
+	int pxInterval;
+	int pxWidth;
+	int pxHeight;
+	float fps;
+};
+
 class Sprite : public Component
 {
 public:
+	// For single image, no anim
 	Sprite(SDL_Renderer* _renderer, const char* _path);
-	Sprite(SDL_Renderer* _renderer, const char* _path, int _numFrames, int _pxInterval, int _pxWidth, int _pxHeight, float _animFPS = 8.0f);
+
+	// For tilesheet animations
+	Sprite(SDL_Renderer* _renderer, const char* _path, SpriteAnimInfo* _animInfo);
+
 	~Sprite();
 	
 public:
 	virtual void Render() override;
 	virtual void Update(double deltaTime) override;
 	
-	SDL_Rect* GetRect();
+	SDL_Rect GetRect() { return destinationRectangle; }
+
+	// For tilesheet animations
+	void SetSprite(const char* _path, SpriteAnimInfo* _info);
+
+	// For single image, no anim
+	void SetSprite(const char* _path);
 
 	void NextFrame();
 
@@ -26,11 +50,7 @@ private:
 	SDL_Texture* texture;
 	SDL_Renderer* renderer;
 
-	int numFrames = 1;
-	int animPxInterval = 32;
-	int animPxWidth = 200;
-	int animPxHeight = 45;
-	float animFPS = 8.0f;
-	int currentFrameIndex = 0;
-	double currentFrameTime = 0.0f;
+	SDL_Rect destinationRectangle;
+
+	SpriteAnimInfo* animInfo = nullptr;
 };

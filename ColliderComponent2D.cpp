@@ -20,7 +20,7 @@ ColliderComponent2D::ColliderComponent2D(int _layer, int _x, int _y, int _w, int
 ColliderComponent2D::ColliderComponent2D(int _layer,  Sprite* sprite)
 	: layer(_layer)
 {
-	collider = sprite->GetRect();
+	*collider = sprite->GetRect();
 }
 
 ColliderComponent2D::~ColliderComponent2D()

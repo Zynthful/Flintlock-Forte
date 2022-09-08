@@ -5,5 +5,6 @@ class Enemy : public Character
 {
 public:
 	Enemy(SDL_Renderer* renderer, const char* spritePath);
+	Enemy(SDL_Renderer* renderer, const char* spritePath, SpriteAnimInfo* _animInfo);
 	~Enemy();
 };
