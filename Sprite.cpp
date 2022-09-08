@@ -37,16 +37,21 @@ void Sprite::Render()
 	SDL_Rect destinationRectangle;
 	destinationRectangle.x = GetOwner()->GetPosition().GetX();
 	destinationRectangle.y = -GetOwner()->GetPosition().GetY();
-	destinationRectangle.w = surface->w;
-	destinationRectangle.h = surface->h;
+
 
 	SDL_Rect* sourceRectangle;
 	if (numFrames <= 1)
 	{
+		destinationRectangle.w = surface->w;
+		destinationRectangle.h = surface->h;
+
 		sourceRectangle = NULL;
 	}
 	else
 	{
+		destinationRectangle.w = animPxWidth;
+		destinationRectangle.h = animPxHeight;
+
 		sourceRectangle = new SDL_Rect();
 		sourceRectangle->w = animPxWidth;
 		sourceRectangle->h = animPxHeight;
