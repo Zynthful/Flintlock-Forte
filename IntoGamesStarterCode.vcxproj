@@ -27,6 +27,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="HealthComponent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -47,6 +48,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameLoop.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="HealthComponent.h" />
     <ClInclude Include="MathUtils.h" />
     <ClInclude Include="PlayerInputComponent.h" />
     <ClInclude Include="Projectile.h" />
