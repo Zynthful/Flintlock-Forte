@@ -1,9 +1,9 @@
 #include "ECSManager.h"
 
 // calls Update on all gameObjects
-void ECSManager::Update()
+void ECSManager::Update(double deltaTime)
 {
-	for (auto& e : gameObjects) e->Update();
+	for (auto& e : gameObjects) e->Update(deltaTime);
 }
 
 // calls Render on all gameObjects

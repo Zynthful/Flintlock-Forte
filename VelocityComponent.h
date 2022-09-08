@@ -13,7 +13,7 @@ public:
 	void StartAcceleratingTowards(Vector2 dir);
 	void StartDecelerating();
 
-	virtual void Update() override;
+	virtual void Update(double deltaTime) override;
 
 private:
 	Vector2 velocity;

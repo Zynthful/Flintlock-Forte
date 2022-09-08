@@ -9,7 +9,7 @@ public:
 
 public:
 	virtual void Initialise();
-	virtual void Update();
+	virtual void Update(double deltaTime);
 	virtual void Render();
 
 	GameObject* GetOwner();

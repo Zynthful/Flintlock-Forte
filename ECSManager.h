@@ -5,7 +5,7 @@
 class ECSManager
 {
 public:
-	void Update();
+	void Update(double deltaTime);
 	void Render();
 	void Refresh();
 

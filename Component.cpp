@@ -9,7 +9,7 @@ void Component::Initialise()
 {
 }
 
-void Component::Update()
+void Component::Update(double deltaTime)
 {
 }
 

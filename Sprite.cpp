@@ -12,9 +12,9 @@ Sprite::Sprite(SDL_Renderer* _renderer, const char* _path)
 }
 
 Sprite::Sprite(SDL_Renderer* _renderer, const char* _path,
-	int _animNumSprites, int _pxInterval, int _pxWidth, int _pxHeight, float _animFPS)
+	int _numFrames, int _pxInterval, int _pxWidth, int _pxHeight, float _animFPS)
 	: renderer(_renderer),
-	animNumSprites(_animNumSprites), animPxInterval(_pxInterval), animPxWidth(_pxWidth), animPxHeight(_pxHeight), animFPS(_animFPS)
+	numFrames(_numFrames), animPxInterval(_pxInterval), animPxWidth(_pxWidth), animPxHeight(_pxHeight), animFPS(_animFPS)
 {
 	surface = IMG_Load(_path);
 	if (surface == NULL)
@@ -41,7 +41,7 @@ void Sprite::Render()
 	destinationRectangle.h = surface->h;
 
 	SDL_Rect* sourceRectangle;
-	if (animNumSprites <= 1)
+	if (numFrames <= 1)
 	{
 		sourceRectangle = NULL;
 	}
@@ -50,7 +50,7 @@ void Sprite::Render()
 		sourceRectangle = new SDL_Rect();
 		sourceRectangle->w = animPxWidth;
 		sourceRectangle->h = animPxHeight;
-		sourceRectangle->x = currentAnimIndex * animPxInterval;
+		sourceRectangle->x = currentFrameIndex * animPxInterval;
 		sourceRectangle->y = 0;
 	}
 
@@ -58,9 +58,18 @@ void Sprite::Render()
 	SDL_RenderCopy(renderer, texture, sourceRectangle, &destinationRectangle);
 }
 
-void Sprite::Update()
+void Sprite::Update(double deltaTime)
 {
-	Component::Update();
+	Component::Update(deltaTime);
+
+	if (numFrames > 1)
+	{
+		currentFrameTime += deltaTime;
+		if (currentFrameTime > numFrames / animFPS )
+		{
+			NextFrame();
+		}
+	}
 }
 
 SDL_Rect* Sprite::GetRect()
@@ -75,8 +84,10 @@ SDL_Rect* Sprite::GetRect()
 
 void Sprite::NextFrame()
 {
-	if (currentAnimIndex + 1 >= animNumSprites)
-		currentAnimIndex = 0;
+	currentFrameTime = 0;
+
+	if (currentFrameIndex + 1 >= numFrames)
+		currentFrameIndex = 0;
 	else
-		currentAnimIndex++;
+		currentFrameIndex++;
 }

@@ -23,9 +23,9 @@ void VelocityComponent::StartDecelerating()
 	destinationVel = Vector2();
 }
 
-void VelocityComponent::Update()
+void VelocityComponent::Update(double deltaTime)
 {
-	Component::Update();
+	Component::Update(deltaTime);
 
 	// handle accel/decel
 	if (destinationVel.RelativeMagnitude() != 0)

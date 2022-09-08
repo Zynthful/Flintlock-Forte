@@ -10,12 +10,12 @@ class Sprite : public Component
 {
 public:
 	Sprite(SDL_Renderer* _renderer, const char* _path);
-	Sprite(SDL_Renderer* _renderer, const char* _path, int animNumSprites, int pxInterval, int pxWidth, int pxHeight, float animFPS = 8.0f);
+	Sprite(SDL_Renderer* _renderer, const char* _path, int _numFrames, int _pxInterval, int _pxWidth, int _pxHeight, float _animFPS = 8.0f);
 	~Sprite();
 	
 public:
 	virtual void Render() override;
-	virtual void Update() override;
+	virtual void Update(double deltaTime) override;
 	
 	SDL_Rect* GetRect();
 
@@ -26,10 +26,11 @@ private:
 	SDL_Texture* texture;
 	SDL_Renderer* renderer;
 
-	int animNumSprites = 1;
+	int numFrames = 1;
 	int animPxInterval = 32;
 	int animPxWidth = 200;
 	int animPxHeight = 45;
 	float animFPS = 8.0f;
-	int currentAnimIndex = 0;
+	int currentFrameIndex = 0;
+	double currentFrameTime = 0.0f;
 };

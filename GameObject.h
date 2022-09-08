@@ -16,7 +16,7 @@ protected:
 	ComponentBitSet componentBitSet;
 
 public:
-	virtual void Update();
+	virtual void Update(double deltaTime);
 	virtual void Render();
 	virtual void Destroy();
 

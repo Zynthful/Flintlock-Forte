@@ -10,7 +10,7 @@ public:
 	~Character();
 
 public:
-	virtual void Update() override;
+	virtual void Update(double deltaTime) override;
 
 	// Movement
 	void Move(Vector2 dir);

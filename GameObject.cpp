@@ -11,9 +11,9 @@ GameObject::~GameObject()
 {
 }
 
-void GameObject::Update()
+void GameObject::Update(double deltaTime)
 {
-	for (auto& c : components) c->Update();
+	for (auto& c : components) c->Update(deltaTime);
 }
 
 void GameObject::Render()

@@ -33,8 +33,8 @@ void GameLoop::Initialise()
 
 void GameLoop::LoadContent()
 {
-	player = new Player(renderer, "assets/Character/Player/idle_0.png");
-	enemy = new Enemy(renderer, "assets/Character/Enemy/idle_0.png");
+	player = new Player(renderer, "assets/Character/Player/idle.png");
+	//enemy = new Enemy(renderer, "assets/Character/Enemy/idle_0.png");
 
 	map = new TiledMap(renderer, "assets/Terrain/Ship/lpc-ship.png");
 }
@@ -42,6 +42,10 @@ void GameLoop::LoadContent()
 bool GameLoop::Update()
 {
 	SDL_Delay(20);
+
+	lastFrameTime = currentFrameTime;
+	currentFrameTime = SDL_GetPerformanceCounter();
+	deltaTime = (double)(currentFrameTime - lastFrameTime) / (double)SDL_GetPerformanceFrequency();
 
 	SDL_Event e;
 	/* Poll for events. SDL_PollEvent() returns 0 when there are no  */
@@ -62,7 +66,7 @@ bool GameLoop::Update()
 	// Update game state
 
 	// Invoke ECS events
-	ecsManager->Update();
+	ecsManager->Update(deltaTime);
 
 	// Loop through all colliders on each layer
 	// Check for collision against other colliders on that layer
