@@ -8,7 +8,6 @@ Projectile::Projectile(SDL_Renderer* _renderer, const char* _spritePath, Vector2
 
 	// Setup collider
 	collider = &AddComponent<ColliderComponent2D>(3, sprite);
-	//collider->onBeginOverlap.AddRaw(this, &Projectile::OnBeginOverlap);
 
 	velComp = &AddComponent<VelocityComponent>(maxSpeed, acceleration, deceleration);
 	

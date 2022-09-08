@@ -1,4 +1,5 @@
 #include "Sprite.h"
+#include "GameObject.h"
 
 Sprite::Sprite(SDL_Renderer* _renderer, const char* _path)
 	: renderer(_renderer)

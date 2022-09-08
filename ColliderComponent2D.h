@@ -23,13 +23,6 @@ public:
 	void SetLayer(int value) { layer = value; }
 
 public:
-	//void OnBeginOverlap(
-	//	std::unique_ptr<ColliderComponent2D>& collider);
-	//void OnEndOverlap(
-	//	std::unique_ptr<ColliderComponent2D>& collider);
-	//void OnOverlapStay(
-	//	std::unique_ptr<ColliderComponent2D>& collider);
-
 	void OnBeginOverlap(ColliderComponent2D* collider);
 	void OnEndOverlap(ColliderComponent2D* collider);
 	void OnOverlapStay(ColliderComponent2D* collider);

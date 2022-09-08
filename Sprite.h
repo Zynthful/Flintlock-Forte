@@ -1,10 +1,11 @@
 #pragma once
+#include "Component.h"
 #include<iostream>
 #include<SDL.h>
 #include<SDL_image.h>
 #include "Vector2.h"
-#include "Component.h"
-#include "GameObject.h"
+
+class GameObject;
 
 struct SpriteAnimInfo
 {

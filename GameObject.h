@@ -1,7 +1,10 @@
 #pragma once
 #include "Vector2.h"
-#include "Component.h"
 #include "ECS.h"
+#include "ColliderComponent2D.h"
+
+class Component;
+class ColliderComponent2D;
 
 class GameObject
 {
@@ -19,6 +22,10 @@ public:
 	virtual void Update(double deltaTime);
 	virtual void Render();
 	virtual void Destroy();
+	
+	//virtual void OnBeginOverlap(ColliderComponent2D* source, ColliderComponent2D* other);
+	//virtual void OnEndOverlap(ColliderComponent2D* source, ColliderComponent2D* other);
+	//virtual void OnOverlapStay(ColliderComponent2D* source, ColliderComponent2D* other);
 
 	// Active getter/setter
 	bool GetActive() const;

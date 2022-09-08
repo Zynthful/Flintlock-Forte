@@ -26,6 +26,18 @@ void GameObject::Destroy()
 	SetActive(false);
 }
 
+void OnBeginOverlap(ColliderComponent2D* source, ColliderComponent2D* other)
+{
+}
+
+void OnEndOverlap(ColliderComponent2D* source, ColliderComponent2D* other)
+{
+}
+
+void OnOverlapStay(ColliderComponent2D* source, ColliderComponent2D* other)
+{
+}
+
 Vector2 GameObject::GetPosition() const
 {
 	return position;
