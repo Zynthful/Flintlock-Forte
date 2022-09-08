@@ -11,7 +11,7 @@ HealthComponent::~HealthComponent()
 
 float HealthComponent::SetHealth(int value)
 {
-	health = MathUtils::Clamp(value, 0.0f, maxHealth);
+	return health = MathUtils::Clamp(value, 0.0f, maxHealth);
 }
 
 void HealthComponent::SetMaxHealth(int value)
