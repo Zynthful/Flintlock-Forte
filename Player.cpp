@@ -10,6 +10,7 @@ Player::Player(SDL_Renderer* _renderer, int _layer)
 	{
 		SpriteAnimInfo("assets/Character/Player/idle.png", 4, 200, 200, 145, 16),
 		SpriteAnimInfo("assets/Character/Player/run.png", 4, 200, 200, 145, 24),
+		SpriteAnimInfo("assets/Character/Player/attack_shoot.png", 4, 200, 200, 145, 32),
 	};
 
 	SetName("Player");
@@ -50,6 +51,7 @@ void Player::StopMoving()
 
 void Player::Attack(Vector2 dir)
 {
+	sprite->Set(&anims[2]);
 	Vector2 bulSpawnPos = GetPosition() + bulSpawnOffset;
 	Projectile* bul = new Projectile(renderer, dir, bulSpawnPos, 2);
 }
