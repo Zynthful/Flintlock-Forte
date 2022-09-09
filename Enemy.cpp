@@ -1,8 +1,8 @@
 #include "Enemy.h"
 #include "VelocityComponent.h"
 
-Enemy::Enemy(SDL_Renderer* renderer, const char* spritePath, int _layer)
-	: Character(renderer, spritePath, _layer)
+Enemy::Enemy(SDL_Renderer* _renderer, const char* _spritePath, int _layer)
+	: Character(_renderer, _spritePath, _layer)
 {
 	//health = &AddComponent<EnemyHealthComponent>();
 

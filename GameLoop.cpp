@@ -49,7 +49,8 @@ void GameLoop::LoadContent()
 	
 	for (int i = 0; i < numEnemies; i++)
 	{
-		Enemy* enemy = new Enemy(renderer, "assets/Character/Enemy/idle_0.png", 2);
+		//Enemy* enemy = new Enemy(renderer, "assets/Character/Enemy/run.png", new SpriteAnimInfo(6, 200, 200, 145, 16), 2);
+		Enemy* enemy = new Enemy(renderer, "assets/Character/Enemy/attack_4.png", 2);
 		Vector2 spawnPos = enemySpawnPos + (enemySpawnInterval * i);
 		enemy->SetPosition(spawnPos);
 		enemy->SetName("Enemy");
@@ -99,6 +100,9 @@ bool GameLoop::Update()
 
 		for (int j = i + 1; j < colliders.size(); j++)
 		{
+			// don't check for collision if this collider's owner is disabled
+			if (!colliders[j]->GetOwner()->GetActive())
+				continue;
 
 			// todo: make OnBegin and OnEnd not call every frame
 
