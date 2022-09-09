@@ -8,13 +8,13 @@ class EnemyHealthComponent;
 class Enemy : public Character
 {
 public:
-	Enemy(SDL_Renderer* renderer, const char* spritePath, int _layer = 0);
-	Enemy(SDL_Renderer* renderer, const char* spritePath, SpriteAnimInfo* _animInfo, int _layer = 0);
+	Enemy(SDL_Renderer* renderer, int _layer = 0);
 	~Enemy();
 
 public:
 	virtual void Update(double deltaTime) override;
 	
+public:
 	void SetTarget(GameObject* obj) { target = obj; }
 	void Attack(Vector2 dir);
 
@@ -23,7 +23,7 @@ public:
 
 private:
 	GameObject* target = nullptr;	// target obj to move towards
-	//EnemyHealthComponent* health = nullptr;
+	//EnemyHealthComponent* health;
 
 	const float attackDistance = 100.0f;
 };

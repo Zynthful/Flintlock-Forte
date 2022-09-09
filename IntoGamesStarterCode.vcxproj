@@ -37,7 +37,6 @@
     <ClCompile Include="PlayerInputComponent.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Sprite.cpp" />
-    <ClCompile Include="TiledMap.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="VelocityComponent.cpp" />
   </ItemGroup>
@@ -60,7 +59,6 @@
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="TiledMap.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="VelocityComponent.h" />
   </ItemGroup>

@@ -1,25 +1,23 @@
 #include "ColliderComponent2D.h"
 #include "GameLoop.h"
 
-ColliderComponent2D::ColliderComponent2D(int _layer, SDL_Rect* rect)
-	: layer(_layer)
+ColliderComponent2D::ColliderComponent2D(SDL_Rect* rect)
 {
-	GameLoop::GetECSManager()->RegisterCollider(this);
 	SetRect(rect);
+	GameLoop::GetECSManager()->RegisterCollider(this);
 }
 
-ColliderComponent2D::ColliderComponent2D(int _layer, int _x, int _y, int _w, int _h)
-	: layer(_layer)
+ColliderComponent2D::ColliderComponent2D(int _x, int _y, int _w, int _h)
 {
-	GameLoop::GetECSManager()->RegisterCollider(this);
 	SetRect(_x, _y, _w, _h);
+	GameLoop::GetECSManager()->RegisterCollider(this);
 }
 
-ColliderComponent2D::ColliderComponent2D(int _layer,  Sprite* _sprite)
-	: layer(_layer), sprite(_sprite)
+ColliderComponent2D::ColliderComponent2D(Sprite* _sprite)
+	: sprite(_sprite)
 {
-	GameLoop::GetECSManager()->RegisterCollider(this);
 	SetRect(sprite);
+	GameLoop::GetECSManager()->RegisterCollider(this);
 }
 
 ColliderComponent2D::~ColliderComponent2D()

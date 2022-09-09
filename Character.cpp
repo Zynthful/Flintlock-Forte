@@ -3,18 +3,17 @@
 #include "Sprite.h"
 #include "ColliderComponent2D.h"
 
-Character::Character(SDL_Renderer* _renderer, const char* _spritePath, int _layer)
-	: renderer(_renderer)
-{
-	sprite = &AddComponent<Sprite>(_renderer, _spritePath);
-	collider = &AddComponent<ColliderComponent2D>(_layer, sprite);
-}
+Character::Character(SDL_Renderer* _renderer, int _layer)
+	: GameObject(_layer), renderer(_renderer)
+{	
+	// should be overriden in derived class
+	SetName("Character");
+	defaultSpritePath = "";
 
-Character::Character(SDL_Renderer* _renderer, const char* _spritePath, SpriteAnimInfo* _animInfo, int _layer)
-	: renderer(_renderer)
-{
-	sprite = &AddComponent<Sprite>(_renderer, _spritePath, _animInfo);
-	collider = &AddComponent<ColliderComponent2D>(_layer, sprite);
+	// can be overriden in derived class
+	speed = 7;
+	acceleration = 3;
+	deceleration = 5;
 }
 
 Character::~Character()
@@ -29,11 +28,6 @@ void Character::Update(double deltaTime)
 	GameObject::Update(deltaTime);
 }
 
-void Character::SetSpeed(float value)
-{
-	speed = value;
-}
-
 void Character::Move(Vector2 dir)
 {
 	velComp->StartAcceleratingTowards(dir * speed);
@@ -42,4 +36,9 @@ void Character::Move(Vector2 dir)
 void Character::StopMoving()
 {
 	velComp->StartDecelerating();
+}
+
+void Character::SetSpeed(float value)
+{
+	speed = value;
 }

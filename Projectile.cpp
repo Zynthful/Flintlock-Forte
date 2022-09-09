@@ -3,23 +3,19 @@
 #include "ColliderComponent2D.h"
 #include "HealthComponent.h"
 
-Projectile::Projectile(SDL_Renderer* _renderer, const char* _spritePath, Vector2 _dir, Vector2 _pos, int _targetLayer)
+Projectile::Projectile(SDL_Renderer* _renderer, Vector2 _dir, Vector2 _pos, int _targetLayer)
 	: targetLayer(_targetLayer)
 {
-	isBul = true;
-	trgtLayer = 2;
-	
-
 	SetPosition(_pos);
 
-	sprite = &AddComponent<Sprite>(_renderer, _spritePath);
-	sprite->SetRect(_pos, 50, 50);
+	isBul = true;
+	trgtLayer = 2;
 
-	// Setup collider
-	collider = &AddComponent<ColliderComponent2D>(3, sprite);
+	defaultSpritePath = "assets/Projectile/FlintlockBullet.png";
 
+	sprite = &AddComponent<Sprite>(_renderer, defaultSpritePath);
+	collider = &AddComponent<ColliderComponent2D>(sprite);
 	velComp = &AddComponent<VelocityComponent>(maxSpeed, acceleration, deceleration);
-	
 	velComp->StartAcceleratingTowards(_dir);
 }
 

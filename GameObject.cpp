@@ -1,7 +1,8 @@
 #include "GameObject.h"
 #include "GameLoop.h"
 
-GameObject::GameObject()
+GameObject::GameObject(int _layer)
+	: layer(_layer)
 {
 	// Register this object to the ECSManager
 	GameLoop::GetECSManager()->RegisterGameObject(this);
@@ -34,7 +35,7 @@ void GameObject::OnBeginOverlap(ColliderComponent2D* source, ColliderComponent2D
 	{
 
 		// check if the collider is of the layer we want to target
-		if (other->GetLayer() == trgtLayer)
+		if (other->GetOwner()->GetLayer() == trgtLayer)
 		{
 			other->GetOwner()->Destroy();
 			// get health component

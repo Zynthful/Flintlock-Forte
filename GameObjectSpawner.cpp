@@ -13,9 +13,11 @@ GameObjectSpawner::~GameObjectSpawner()
 
 void GameObjectSpawner::SpawnObj()
 {
-	Enemy* enemy = new Enemy(renderer, "assets/Character/Enemy/idle_0.png", 2);
+	// causes memory read access violation
+	// somehow? 
+	// ecs my DESPISED >:(
+	Enemy* enemy = new Enemy(renderer, 2);
 	enemy->SetPosition(spawnPos);
-	enemy->SetName("Enemy");
 	enemy->SetTarget(target);
 	enemies.push_back(enemy);
 }

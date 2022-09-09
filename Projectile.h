@@ -10,7 +10,7 @@ class Sprite;
 class Projectile : public GameObject
 {
 public:
-	Projectile(SDL_Renderer* _renderer, const char* _spritePath, Vector2 _dir, Vector2 _pos, int _targetLayer = 0);
+	Projectile(SDL_Renderer* _renderer, Vector2 _dir, Vector2 _pos, int _targetLayer = 0);
 	~Projectile();
 
 public:
@@ -34,6 +34,8 @@ private:
 	
 	float lifeTime = 2.0f;
 	float currentLifeTime = 0.0f;
+
+	const char* defaultSpritePath;
 
 public:
 	void DoBulletStuff(ColliderComponent2D* collider);

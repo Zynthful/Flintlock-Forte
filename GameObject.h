@@ -8,7 +8,7 @@ class ColliderComponent2D;
 class GameObject
 {
 public:
-	GameObject();
+	GameObject(int _layer = 0);
 	~GameObject();
 
 	// ECS
@@ -29,6 +29,8 @@ public:
 	// Active getter/setter
 	bool GetActive() const;
 	void SetActive(bool value);
+
+	int GetLayer() { return layer; }
 
 	std::string GetName() const { return name; }
 	void SetName(std::string value) { name = value; }
@@ -76,6 +78,8 @@ protected:
 	Vector2 position;
 	Vector2 scale = Vector2(1, 1);
 	std::string name = "";
+
+	int layer;
 
 	// bullet stuff
 	bool isBul = false;

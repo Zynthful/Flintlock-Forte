@@ -15,17 +15,22 @@ Sprite::Sprite(SDL_Renderer* _renderer, const char* _path, SpriteAnimInfo* _anim
 
 Sprite::~Sprite()
 {
-	SDL_FreeSurface(surface);
-	SDL_DestroyTexture(texture);
+	if (surface != nullptr)
+		SDL_FreeSurface(surface);
+
+	if (texture != nullptr)
+		SDL_DestroyTexture(texture);
 }
 
 void Sprite::Render()
 {
 	Component::Render();
 
+	if (surface == nullptr || texture == nullptr)
+		return;
+
 	destinationRectangle.x = GetOwner()->GetPosition().GetX();
 	destinationRectangle.y = -GetOwner()->GetPosition().GetY();
-
 
 	SDL_Rect* sourceRectangle;
 	if (animInfo == nullptr)
@@ -76,6 +81,7 @@ void Sprite::SetSprite(const char* _path)
 	if (surface == NULL)
 	{
 		std::cerr << "Image at path: " << _path << " could not be loaded! Error: " << SDL_GetError() << std::endl;
+		return;
 	}
 	texture = SDL_CreateTextureFromSurface(renderer, surface);
 }
@@ -90,8 +96,12 @@ void Sprite::NextFrame()
 		animInfo->currentFrameIndex++;
 }
 
-SpriteAnimInfo::SpriteAnimInfo(int _numFrames, int _pxInterval, int _pxWidth, int _pxHeight, float _fps)
-	: numFrames(_numFrames), pxInterval(_pxInterval), pxWidth(_pxWidth), pxHeight(_pxHeight), fps(_fps)
+SpriteAnimInfo::SpriteAnimInfo(
+	const char* _spritesheetPath, int _numFrames, int _pxInterval,
+	int _pxWidth, int _pxHeight, float _fps)
+	: spritesheetPath(_spritesheetPath), numFrames(_numFrames),
+	pxInterval(_pxInterval), pxWidth(_pxWidth),
+	pxHeight(_pxHeight), fps(_fps)
 {
 	currentFrameIndex = 0;
 	currentFrameTime = 0;

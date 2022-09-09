@@ -1,18 +1,22 @@
 #include "Player.h"
-#include "PlayerHealthComponent.h"
+#include "Sprite.h"
+#include "ColliderComponent2D.h"
+#include "VelocityComponent.h"
 
-Player::Player(SDL_Renderer* _renderer, const char* _spritePath, int _layer)
-	: Character(_renderer, _spritePath, _layer)
+Player::Player(SDL_Renderer* _renderer, int _layer)
+	: Character(_renderer, _layer)
 {
-	input = new PlayerInputComponent(this);
-	health = &AddComponent<PlayerHealthComponent>();
-}
+	SetName("Player");
+	speed = 7;
+	acceleration = 3;
+	deceleration = 5;
+	defaultSpritePath = "assets/Character/Player/idle_0.png";
 
-Player::Player(SDL_Renderer* _renderer, const char* _spritePath, SpriteAnimInfo* _animInfo, int _layer)
-	: Character(_renderer, _spritePath, _animInfo, _layer)
-{
+	sprite = &AddComponent<Sprite>(renderer, defaultSpritePath);
+	collider = &AddComponent<ColliderComponent2D>(sprite);
+	velComp = &AddComponent<VelocityComponent>(speed, acceleration, deceleration);
 	input = new PlayerInputComponent(this);
-	health = &AddComponent<PlayerHealthComponent>();
+	//health = &AddComponent<PlayerHealthComponent>();
 }
 
 Player::~Player()
@@ -24,8 +28,7 @@ Player::~Player()
 void Player::Attack(Vector2 dir)
 {
 	Vector2 bulSpawnPos = GetPosition() + bulSpawnOffset;
-	Projectile* bul = new Projectile(renderer, bulSpritePath, dir, bulSpawnPos, 2);
-	bul->SetName("Bullet");
+	Projectile* bul = new Projectile(renderer, dir, bulSpawnPos, 2);
 }
 
 void Player::Deflect()

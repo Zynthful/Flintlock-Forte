@@ -9,13 +9,8 @@ class PlayerHealthComponent;
 class Player : public Character
 {
 public:
-	Player(SDL_Renderer* _renderer, const char* _spritePath, int _layer = 0);
-	Player(SDL_Renderer* _renderer, const char* _spritePath, SpriteAnimInfo* _animInfo, int _layer = 0);
+	Player(SDL_Renderer* _renderer, int _layer = 0);
 	~Player();
-
-private:
-	// private copy constructor to prevent the creation of a player object
-	Player(const Player&);
 
 public:
 	// Actions
@@ -33,5 +28,4 @@ private:
 	PlayerHealthComponent* health = nullptr;
 
 	Vector2 bulSpawnOffset = Vector2(100, -50);
-	const char* bulSpritePath = "assets/Projectile/FlintlockBullet.png";
 };

@@ -6,7 +6,6 @@
 #include <iostream>
 #include "Player.h"
 #include "ECSManager.h"
-#include "TiledMap.h"
 #include "Enemy.h"
 
 class GameObjectSpawner;
@@ -32,11 +31,6 @@ private:
 	Player* player;
 
 	//GameObjectSpawner* enemySpawner = nullptr;
-
-	Enemy* enemy1 = nullptr;
-	Enemy* enemy2 = nullptr;
-	Enemy* enemy3 = nullptr;
-	Enemy* enemy4 = nullptr;
 	int numEnemies = 100;
 	Vector2 enemySpawnInterval = Vector2(200, 0);
 	Vector2 enemySpawnPos = Vector2(1400, -200);
@@ -44,8 +38,6 @@ private:
 	// SDL pointers
 	SDL_Window* window;
 	SDL_Renderer* renderer;
-
-	TiledMap* map;
 
 	GameObject* shipBase = nullptr;
 	GameObject* ocean = nullptr;

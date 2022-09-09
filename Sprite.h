@@ -9,16 +9,21 @@ class GameObject;
 
 struct SpriteAnimInfo
 {
-	SpriteAnimInfo(int _numFrames, int _pxInterval, int _pxWidth, int _pxHeight, float _fps);
+	SpriteAnimInfo(
+		const char* _spritesheetPath, int _numFrames, int _pxInterval,
+		int _pxWidth, int _pxHeight, float _fps);
+
+	const char* spritesheetPath;
 
 	int currentFrameIndex;
 	double currentFrameTime;
-
 	int numFrames;
+	float fps;
+
 	int pxInterval;
 	int pxWidth;
 	int pxHeight;
-	float fps;
+
 };
 
 class Sprite : public Component
@@ -38,13 +43,6 @@ public:
 	
 	SDL_Rect GetRect() { return destinationRectangle; }
 	void SetRect(SDL_Rect* value) { destinationRectangle = *value; }
-	void SetRect(Vector2 pos, int w, int h)
-	{
-		destinationRectangle.x = pos.GetX();
-		destinationRectangle.y = pos.GetY();
-		destinationRectangle.w = w;
-		destinationRectangle.h = h;
-	}
 
 	// For tilesheet animations
 	void SetSprite(const char* _path, SpriteAnimInfo* _info);

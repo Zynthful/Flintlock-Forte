@@ -43,39 +43,35 @@ void GameLoop::LoadContent()
 	shipBase->SetPosition(-100, -100);
 	shipBase->AddComponent<Sprite>(renderer, "assets/Terrain/Ship/ship_base.png");
 
-	player = new Player(renderer, "assets/Character/Player/idle.png", new SpriteAnimInfo(4, 200, 200, 145, 16), 1);
-	player->SetName("Player");
+	player = new Player(renderer, 1);
 	player->SetPosition(200, -200);
 	
+	// temp solution to spawning enemies
+	// spawns enemies at increasing distances from the player, all at once
 	for (int i = 0; i < numEnemies; i++)
 	{
-		//Enemy* enemy = new Enemy(renderer, "assets/Character/Enemy/run.png", new SpriteAnimInfo(6, 200, 200, 145, 16), 2);
-		Enemy* enemy = new Enemy(renderer, "assets/Character/Enemy/attack_4.png", 2);
+		Enemy* enemy = new Enemy(renderer, 2);
 		Vector2 spawnPos = enemySpawnPos + (enemySpawnInterval * i);
 		enemy->SetPosition(spawnPos);
-		enemy->SetName("Enemy");
 		enemy->SetTarget(player);
-		enemy->GetSprite()->SetSprite("assets/Character/Enemy/run.png", new SpriteAnimInfo(6, 200, 200, 145, 60));
 	}
 
 	//enemySpawner = new GameObjectSpawner(renderer, player);
-
-	map = new TiledMap(renderer, "assets/Terrain/Ship/ship_32x32_32x32.png");
 }
 
 bool GameLoop::Update()
 {
 	SDL_Delay(20);
 
+	// Calculate frame time, etc.
 	lastFrameTime = currentFrameTime;
 	currentFrameTime = SDL_GetPerformanceCounter();
 	deltaTime = (double)(currentFrameTime - lastFrameTime) / (double)SDL_GetPerformanceFrequency();
 
-	SDL_Event e;
 	/* Poll for events. SDL_PollEvent() returns 0 when there are no  */
 	/* more events on the event queue, our while loop will exit when */
 	/* that occurs.                                                  */
-
+	SDL_Event e;
 	while (SDL_PollEvent(&e) != 0)
 	{
 		if (e.type == SDL_QUIT) {
@@ -86,7 +82,7 @@ bool GameLoop::Update()
 		player->GetInputComponent()->UpdateInput(e);
 	}
 
-	// Invoke ECS events
+	// invoke Update on GameObjects and Components
 	ecsManager->Update(deltaTime);
 
 	// Loop through all colliders on each layer
@@ -119,8 +115,6 @@ bool GameLoop::Update()
 			}
 		}
 	}
-
-
 	return true;
 }
 
@@ -133,8 +127,11 @@ void GameLoop::Render()
 	// =================================
 	// RENDER OTHER OBJECTS HERE
 	// ORDER OF RENDERING MATTERS (later = renders on top)
-	map->Render();
+
+	// invoke Render on GameObjects and Components
 	ecsManager->Render();
+	//ecsManager->Update(deltaTime);	// uncomment to see sdl draw rect boxes on colliders
+										// i know, cringe
 
 	// =================================
 	SDL_RenderPresent(renderer);
@@ -145,7 +142,6 @@ void GameLoop::UnloadContent()
 {
 	//delete enemySpawner;
 	delete player;
-	delete map;
 	delete ocean;
 	delete shipBase;
 }

@@ -1,19 +1,19 @@
 #include "Enemy.h"
+#include "Sprite.h"
+#include "ColliderComponent2D.h"
 #include "VelocityComponent.h"
 
-Enemy::Enemy(SDL_Renderer* _renderer, const char* _spritePath, int _layer)
-	: Character(_renderer, _spritePath, _layer)
+Enemy::Enemy(SDL_Renderer* _renderer, int _layer)
+	: Character(_renderer, _layer)
 {
-	//health = &AddComponent<EnemyHealthComponent>();
+	defaultSpritePath = "assets/Character/Enemy/idle_0.png";
+	SetName("Enemy");
 
 	speed = 4;
-}
-
-Enemy::Enemy(SDL_Renderer* renderer, const char* spritePath, SpriteAnimInfo* _animInfo, int _layer)
-	: Character(renderer, spritePath, _layer)
-{
+	sprite = &AddComponent<Sprite>(renderer, defaultSpritePath);
+	collider = &AddComponent<ColliderComponent2D>(sprite);
+	velComp = &AddComponent<VelocityComponent>(speed, acceleration, deceleration);
 	//health = &AddComponent<EnemyHealthComponent>();
-
 }
 
 Enemy::~Enemy()
