@@ -38,6 +38,17 @@ void Character::StopMoving()
 	velComp->StartDecelerating();
 }
 
+void Character::SetAnimation(SpriteAnimInfo* info)
+{
+	if (sprite == nullptr)
+	{
+		// todo: initialise sprite comp if it's null
+		// for now we just return
+		return;
+	}
+	sprite->Set(info);
+}
+
 void Character::SetSpeed(float value)
 {
 	speed = value;

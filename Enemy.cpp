@@ -6,6 +6,11 @@
 Enemy::Enemy(SDL_Renderer* _renderer, int _layer)
 	: Character(_renderer, _layer)
 {
+	anims =
+	{
+		SpriteAnimInfo("assets/Character/Enemy/run.png", 6, 200, 200, 145, 64),
+	};
+
 	defaultSpritePath = "assets/Character/Enemy/idle_0.png";
 	SetName("Enemy");
 
@@ -14,6 +19,8 @@ Enemy::Enemy(SDL_Renderer* _renderer, int _layer)
 	collider = &AddComponent<ColliderComponent2D>(sprite);
 	velComp = &AddComponent<VelocityComponent>(speed, acceleration, deceleration);
 	//health = &AddComponent<EnemyHealthComponent>();
+
+	sprite->Set(&anims[0]);
 }
 
 Enemy::~Enemy()

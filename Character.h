@@ -23,6 +23,8 @@ public:
 	void Move(Vector2 dir);
 	void StopMoving();
 
+	void SetAnimation(SpriteAnimInfo* info);
+
 public:
 	// Movement get/set
 	float GetSpeed() { return speed; }

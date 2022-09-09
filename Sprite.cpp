@@ -4,13 +4,13 @@
 Sprite::Sprite(SDL_Renderer* _renderer, const char* _path)
 	: renderer(_renderer)
 {
-	SetSprite(_path);
+	Set(_path);
 }
 
-Sprite::Sprite(SDL_Renderer* _renderer, const char* _path, SpriteAnimInfo* _animInfo)
+Sprite::Sprite(SDL_Renderer* _renderer, SpriteAnimInfo* _animInfo)
 	: renderer(_renderer), animInfo(_animInfo)
 {
-	SetSprite(_path, _animInfo);
+	Set(_animInfo);
 }
 
 Sprite::~Sprite()
@@ -69,13 +69,7 @@ void Sprite::Update(double deltaTime)
 	}
 }
 
-void Sprite::SetSprite(const char* _path, SpriteAnimInfo* _animInfo)
-{
-	SetSprite(_path);
-	animInfo = _animInfo;
-}
-
-void Sprite::SetSprite(const char* _path)
+void Sprite::Set(const char* _path)
 {
 	surface = IMG_Load(_path);
 	if (surface == NULL)
@@ -84,6 +78,12 @@ void Sprite::SetSprite(const char* _path)
 		return;
 	}
 	texture = SDL_CreateTextureFromSurface(renderer, surface);
+}
+
+void Sprite::Set(SpriteAnimInfo* _animInfo)
+{
+	Set(_animInfo->spritesheetPath);
+	animInfo = _animInfo;
 }
 
 void Sprite::NextFrame()

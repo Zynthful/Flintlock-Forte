@@ -31,9 +31,8 @@ class Sprite : public Component
 public:
 	// For single image, no anim
 	Sprite(SDL_Renderer* _renderer, const char* _path);
-
 	// For tilesheet animations
-	Sprite(SDL_Renderer* _renderer, const char* _path, SpriteAnimInfo* _animInfo);
+	Sprite(SDL_Renderer* _renderer, SpriteAnimInfo* _animInfo);
 
 	~Sprite();
 	
@@ -41,22 +40,22 @@ public:
 	virtual void Render() override;
 	virtual void Update(double deltaTime) override;
 	
+public:
 	SDL_Rect GetRect() { return destinationRectangle; }
 	void SetRect(SDL_Rect* value) { destinationRectangle = *value; }
 
-	// For tilesheet animations
-	void SetSprite(const char* _path, SpriteAnimInfo* _info);
+	SDL_Renderer* GetRenderer() { return renderer; }
 
-	// For single image, no anim
-	void SetSprite(const char* _path);
+	void Set(const char* _path);		// For single image, no anim
+	void Set(SpriteAnimInfo* _info);	// For tilesheet animations
 
+public:
 	void NextFrame();
 
 private:
 	SDL_Surface* surface;
 	SDL_Texture* texture;
 
-public:
 	SDL_Renderer* renderer;
 
 	SDL_Rect destinationRectangle;

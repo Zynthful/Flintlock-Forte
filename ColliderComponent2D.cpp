@@ -27,10 +27,9 @@ ColliderComponent2D::~ColliderComponent2D()
 
 void ColliderComponent2D::Update(double deltaTime)
 {
-	SDL_RenderDrawRect(sprite->renderer, new SDL_Rect{ 300, 300, 100, 100 });
 	if (sprite != nullptr)
 	{
-		SDL_RenderDrawRect(sprite->renderer, collider);
+		SDL_RenderDrawRect(sprite->GetRenderer(), collider);
 	}
 	Component::Update(deltaTime);
 	if (sprite != nullptr)

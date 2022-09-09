@@ -6,6 +6,11 @@
 Player::Player(SDL_Renderer* _renderer, int _layer)
 	: Character(_renderer, _layer)
 {
+	anims =
+	{
+		SpriteAnimInfo("assets/Character/Player/idle.png", 4, 200, 200, 145, 16),
+	};
+
 	SetName("Player");
 	speed = 7;
 	acceleration = 3;
@@ -17,6 +22,9 @@ Player::Player(SDL_Renderer* _renderer, int _layer)
 	velComp = &AddComponent<VelocityComponent>(speed, acceleration, deceleration);
 	input = new PlayerInputComponent(this);
 	//health = &AddComponent<PlayerHealthComponent>();
+
+	// initialise with idle anim
+	sprite->Set(&anims[0]);
 }
 
 Player::~Player()
