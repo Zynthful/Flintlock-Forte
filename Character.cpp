@@ -26,6 +26,8 @@ Character::~Character()
 void Character::Update(double deltaTime)
 {
 	GameObject::Update(deltaTime);
+
+	moving = velComp->GetVelocity().Magnitude() != 0;
 }
 
 void Character::Move(Vector2 dir)

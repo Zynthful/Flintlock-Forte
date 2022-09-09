@@ -23,7 +23,6 @@ struct SpriteAnimInfo
 	int pxInterval;
 	int pxWidth;
 	int pxHeight;
-
 };
 
 class Sprite : public Component

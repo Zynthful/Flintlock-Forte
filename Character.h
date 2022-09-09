@@ -20,8 +20,8 @@ public:
 
 public:
 	// Movement
-	void Move(Vector2 dir);
-	void StopMoving();
+	virtual void Move(Vector2 dir);
+	virtual void StopMoving();
 
 	void SetAnimation(SpriteAnimInfo* info);
 
@@ -50,4 +50,6 @@ protected:
 	float speed;
 	float acceleration;
 	float deceleration;
+
+	bool moving = false;
 };

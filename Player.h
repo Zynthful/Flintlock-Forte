@@ -14,6 +14,9 @@ public:
 
 public:
 	// Actions
+	virtual void Move(Vector2 dir) override;
+	virtual void StopMoving() override;
+
 	void Attack(Vector2 dir);
 	void Deflect();
 	void Dodge();

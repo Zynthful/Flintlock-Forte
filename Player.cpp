@@ -9,6 +9,7 @@ Player::Player(SDL_Renderer* _renderer, int _layer)
 	anims =
 	{
 		SpriteAnimInfo("assets/Character/Player/idle.png", 4, 200, 200, 145, 16),
+		SpriteAnimInfo("assets/Character/Player/run.png", 4, 200, 200, 145, 24),
 	};
 
 	SetName("Player");
@@ -31,6 +32,20 @@ Player::~Player()
 {
 	delete input;
 	delete health;
+}
+
+void Player::Move(Vector2 dir)
+{
+	if (!moving)
+		sprite->Set(&anims[1]);
+
+	Character::Move(dir);
+}
+
+void Player::StopMoving()
+{
+	sprite->Set(&anims[0]);
+	Character::StopMoving();
 }
 
 void Player::Attack(Vector2 dir)
