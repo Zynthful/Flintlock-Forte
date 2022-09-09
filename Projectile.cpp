@@ -1,6 +1,7 @@
 #include "Projectile.h"
 #include "VelocityComponent.h"
 #include "ColliderComponent2D.h"
+#include "HealthComponent.h"
 
 Projectile::Projectile(SDL_Renderer* _renderer, const char* _spritePath, Vector2 _dir, Vector2 _pos, int _targetLayer)
 	: targetLayer(_targetLayer)
@@ -35,6 +36,16 @@ void Projectile::OnOverlapStay(ColliderComponent2D* source, ColliderComponent2D*
 {
 }
 
+void Projectile::Update(double deltaTime)
+{
+	GameObject::Update(deltaTime);
+	currentLifeTime += deltaTime;
+	if (currentLifeTime >= lifeTime)
+	{
+		Destroy();
+	}
+}
+
 void Projectile::OnBeginOverlap(ColliderComponent2D* collider)
 {
 	// check if the collider is of the layer we want to target
@@ -42,6 +53,16 @@ void Projectile::OnBeginOverlap(ColliderComponent2D* collider)
 	{
 		// get health component
 		// do damage if it exists
-		// kill bullet
+		HealthComponent* health = &(collider->GetOwner()->GetComponent<HealthComponent>());
+		if (health != NULL)
+		{
+			health->TakeDamage(damage);
+			Destroy();
+		}
+
+		//if (collider->GetOwner()->HasComponent<HealthComponent>())
+		//{
+		//}
+
 	}
 }

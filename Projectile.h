@@ -18,6 +18,8 @@ public:
 	virtual void OnEndOverlap(ColliderComponent2D* source, ColliderComponent2D* other) override;
 	virtual void OnOverlapStay(ColliderComponent2D* source, ColliderComponent2D* other) override;
 
+	virtual void Update(double deltaTime) override;
+
 private:
 	ColliderComponent2D* collider = nullptr;
 	VelocityComponent* velComp = nullptr;
@@ -28,6 +30,11 @@ private:
 	float deceleration = 30.0f;
 
 	int targetLayer = 0;
+
+	int damage = 1;
+	
+	float lifeTime = 2.0f;
+	float currentLifeTime = 0.0f;
 
 	void OnBeginOverlap(ColliderComponent2D* collider);
 };
