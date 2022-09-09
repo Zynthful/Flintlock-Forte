@@ -33,6 +33,14 @@ private:
 
 	//GameObjectSpawner* enemySpawner = nullptr;
 
+	Enemy* enemy1 = nullptr;
+	Enemy* enemy2 = nullptr;
+	Enemy* enemy3 = nullptr;
+	Enemy* enemy4 = nullptr;
+	int numEnemies = 100;
+	Vector2 enemySpawnInterval = Vector2(200, 0);
+	Vector2 enemySpawnPos = Vector2(1400, -200);
+
 	// SDL pointers
 	SDL_Window* window;
 	SDL_Renderer* renderer;

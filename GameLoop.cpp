@@ -45,6 +45,16 @@ void GameLoop::LoadContent()
 
 	player = new Player(renderer, "assets/Character/Player/idle.png", new SpriteAnimInfo(4, 200, 200, 145, 16), 1);
 	player->SetName("Player");
+	player->SetPosition(200, -200);
+	
+	for (int i = 0; i < numEnemies; i++)
+	{
+		Enemy* enemy = new Enemy(renderer, "assets/Character/Enemy/idle_0.png", 2);
+		Vector2 spawnPos = enemySpawnPos + (enemySpawnInterval * i);
+		enemy->SetPosition(spawnPos);
+		enemy->SetName("Enemy");
+		enemy->SetTarget(player);
+	}
 
 	//enemySpawner = new GameObjectSpawner(renderer, player);
 
@@ -74,17 +84,12 @@ bool GameLoop::Update()
 		player->GetInputComponent()->UpdateInput(e);
 	}
 
-
-	// Update game state
-
 	// Invoke ECS events
 	ecsManager->Update(deltaTime);
-	//ecsManager->Refresh();
 
 	// Loop through all colliders on each layer
 	// Check for collision against other colliders on that layer
 	// Invoke relevant events
-
 	auto& colliders = ecsManager->GetColliderComponents();
 	for (int i = 0; i < colliders.size(); i++)
 	{
@@ -96,10 +101,6 @@ bool GameLoop::Update()
 		{
 
 			// todo: make OnBegin and OnEnd not call every frame
-			
-			// 0: enemy
-			// 1: player
-			// 2: bullet
 
 			// beware, this std::cout WILL ruin your fps
 			//std::cout << "Comparing " << colliders[i]->GetOwner()->GetName() << " against " << colliders[j]->GetOwner()->GetName() << std::endl;
