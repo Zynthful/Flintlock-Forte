@@ -37,6 +37,14 @@ public:
 	virtual void Update(double deltaTime) override;
 	
 	SDL_Rect GetRect() { return destinationRectangle; }
+	void SetRect(SDL_Rect* value) { destinationRectangle = *value; }
+	void SetRect(Vector2 pos, int w, int h)
+	{
+		destinationRectangle.x = pos.GetX();
+		destinationRectangle.y = pos.GetY();
+		destinationRectangle.w = w;
+		destinationRectangle.h = h;
+	}
 
 	// For tilesheet animations
 	void SetSprite(const char* _path, SpriteAnimInfo* _info);
@@ -49,6 +57,8 @@ public:
 private:
 	SDL_Surface* surface;
 	SDL_Texture* texture;
+
+public:
 	SDL_Renderer* renderer;
 
 	SDL_Rect destinationRectangle;

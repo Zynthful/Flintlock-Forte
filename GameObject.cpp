@@ -13,9 +13,6 @@ GameObject::~GameObject()
 
 void GameObject::Update(double deltaTime)
 {
-	if (!GetActive())
-		return;
-
 	// todo: make this get called from ecs manager?
 	// means that if GameObject::Update isn't called from child classes, components won't be updated
 	for (auto& c : components) c->Update(deltaTime);
@@ -23,9 +20,6 @@ void GameObject::Update(double deltaTime)
 
 void GameObject::Render()
 {
-	if (!GetActive())
-		return;
-
 	for (auto& c : components) c->Render();
 }
 
@@ -36,6 +30,23 @@ void GameObject::Destroy()
 
 void GameObject::OnBeginOverlap(ColliderComponent2D* source, ColliderComponent2D* other)
 {
+	if (isBul)
+	{
+
+		// check if the collider is of the layer we want to target
+		if (other->GetLayer() == trgtLayer)
+		{
+			other->GetOwner()->Destroy();
+			// get health component
+			// do damage if it exists
+			//HealthComponent* health = &(other->GetOwner()->GetComponent<HealthComponent>());
+			//if (health != NULL)
+			//{
+			//	health->TakeDamage(damage);
+			//}
+			Destroy();
+		}
+	}
 }
 
 void GameObject::OnEndOverlap(ColliderComponent2D* source, ColliderComponent2D* other)

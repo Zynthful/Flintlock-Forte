@@ -30,6 +30,9 @@ public:
 	bool GetActive() const;
 	void SetActive(bool value);
 
+	std::string GetName() const { return name; }
+	void SetName(std::string value) { name = value; }
+
 	template <typename T> bool HasComponent() const
 	{
 		return componentBitSet[GetComponentTypeID<T>];
@@ -72,4 +75,10 @@ protected:
 	bool active = true;
 	Vector2 position;
 	Vector2 scale = Vector2(1, 1);
+	std::string name = "";
+
+	// bullet stuff
+	bool isBul = false;
+	int trgtLayer = 0;
+	int damage = 1;
 };

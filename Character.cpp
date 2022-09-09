@@ -19,16 +19,14 @@ Character::Character(SDL_Renderer* _renderer, const char* _spritePath, SpriteAni
 
 Character::~Character()
 {
+	delete sprite;
+	delete velComp;
+	delete collider;
 }
 
 void Character::Update(double deltaTime)
 {
 	GameObject::Update(deltaTime);
-	
-	if (sprite != nullptr)
-	{
-		collider->SetRect(sprite);
-	}
 }
 
 void Character::SetSpeed(float value)

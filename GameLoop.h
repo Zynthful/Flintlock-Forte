@@ -9,6 +9,7 @@
 #include "TiledMap.h"
 #include "Enemy.h"
 
+class GameObjectSpawner;
 class Player;
 
 class GameLoop
@@ -30,7 +31,7 @@ private:
 	// Game objects
 	Player* player;
 
-	Enemy* enemy;
+	//GameObjectSpawner* enemySpawner = nullptr;
 
 	// SDL pointers
 	SDL_Window* window;

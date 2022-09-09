@@ -4,13 +4,25 @@
 // calls Update on all gameObjects
 void ECSManager::Update(double deltaTime)
 {
-	for (auto& e : gameObjects) e->Update(deltaTime);
+	for (auto& e : gameObjects)
+	{
+		if (e->GetActive())
+		{
+			e->Update(deltaTime);
+		}
+	}
 }
 
 // calls Render on all gameObjects
 void ECSManager::Render()
 {
-	for (auto& e : gameObjects) e->Render();
+	for (auto& e : gameObjects)
+	{
+		if (e->GetActive())
+		{
+			e->Render();
+		}
+	}
 }
 
 // looks for inactive components and removes them

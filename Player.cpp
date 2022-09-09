@@ -25,6 +25,7 @@ void Player::Attack(Vector2 dir)
 {
 	Vector2 bulSpawnPos = GetPosition() + bulSpawnOffset;
 	Projectile* bul = new Projectile(renderer, bulSpritePath, dir, bulSpawnPos, 2);
+	bul->SetName("Bullet");
 }
 
 void Player::Deflect()

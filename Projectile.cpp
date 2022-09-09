@@ -6,9 +6,14 @@
 Projectile::Projectile(SDL_Renderer* _renderer, const char* _spritePath, Vector2 _dir, Vector2 _pos, int _targetLayer)
 	: targetLayer(_targetLayer)
 {
+	isBul = true;
+	trgtLayer = 2;
+	
+
 	SetPosition(_pos);
 
 	sprite = &AddComponent<Sprite>(_renderer, _spritePath);
+	sprite->SetRect(_pos, 50, 50);
 
 	// Setup collider
 	collider = &AddComponent<ColliderComponent2D>(3, sprite);
@@ -21,19 +26,26 @@ Projectile::Projectile(SDL_Renderer* _renderer, const char* _spritePath, Vector2
 Projectile::~Projectile()
 {
 	delete collider;
+	delete velComp;
 	delete sprite;
 }
 
 void Projectile::OnBeginOverlap(ColliderComponent2D* source, ColliderComponent2D* other)
 {
+	GameObject::OnBeginOverlap(source, other);
+	DoBulletStuff(collider);
 }
 
 void Projectile::OnEndOverlap(ColliderComponent2D* source, ColliderComponent2D* other)
 {
+	GameObject::OnEndOverlap(source, other);
+
 }
 
 void Projectile::OnOverlapStay(ColliderComponent2D* source, ColliderComponent2D* other)
 {
+	GameObject::OnOverlapStay(source, other);
+
 }
 
 void Projectile::Update(double deltaTime)
@@ -46,23 +58,7 @@ void Projectile::Update(double deltaTime)
 	}
 }
 
-void Projectile::OnBeginOverlap(ColliderComponent2D* collider)
+void Projectile::DoBulletStuff(ColliderComponent2D* collider)
 {
-	// check if the collider is of the layer we want to target
-	if (collider->GetLayer() == targetLayer)
-	{
-		// get health component
-		// do damage if it exists
-		HealthComponent* health = &(collider->GetOwner()->GetComponent<HealthComponent>());
-		if (health != NULL)
-		{
-			health->TakeDamage(damage);
-			Destroy();
-		}
 
-		//if (collider->GetOwner()->HasComponent<HealthComponent>())
-		//{
-		//}
-
-	}
 }

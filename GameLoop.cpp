@@ -1,4 +1,5 @@
 #include "GameLoop.h"
+#include "GameObjectSpawner.h"
 
 // Declare static vars
 ECSManager* GameLoop::ecsManager = new ECSManager();
@@ -43,8 +44,10 @@ void GameLoop::LoadContent()
 	shipBase->AddComponent<Sprite>(renderer, "assets/Terrain/Ship/ship_base.png");
 
 	player = new Player(renderer, "assets/Character/Player/idle.png", new SpriteAnimInfo(4, 200, 200, 145, 16), 1);
-	enemy = new Enemy(renderer, "assets/Character/Enemy/idle_0.png", 2);
-	enemy->SetTarget(player);
+	player->SetName("Player");
+
+	//enemySpawner = new GameObjectSpawner(renderer, player);
+
 	map = new TiledMap(renderer, "assets/Terrain/Ship/ship_32x32_32x32.png");
 }
 
@@ -76,6 +79,7 @@ bool GameLoop::Update()
 
 	// Invoke ECS events
 	ecsManager->Update(deltaTime);
+	//ecsManager->Refresh();
 
 	// Loop through all colliders on each layer
 	// Check for collision against other colliders on that layer
@@ -84,13 +88,24 @@ bool GameLoop::Update()
 	auto& colliders = ecsManager->GetColliderComponents();
 	for (int i = 0; i < colliders.size(); i++)
 	{
+		// don't check for collision if this collider's owner is disabled
+		if (!colliders[i]->GetOwner()->GetActive())
+			continue;
+
 		for (int j = i + 1; j < colliders.size(); j++)
 		{
+
 			// todo: make OnBegin and OnEnd not call every frame
-			//std::cout << "Comparing " << i << " against " << j << std::endl;
+			
+			// 0: enemy
+			// 1: player
+			// 2: bullet
+
+			// beware, this std::cout WILL ruin your fps
+			//std::cout << "Comparing " << colliders[i]->GetOwner()->GetName() << " against " << colliders[j]->GetOwner()->GetName() << std::endl;
 			if (SDL_HasIntersection(colliders[i]->GetRect(), colliders[j]->GetRect()))
 			{
-				colliders[i]->OnBeginOverlap(colliders[j]);
+				colliders[j]->OnBeginOverlap(colliders[i]);
 			}
 			else
 			{
@@ -122,8 +137,8 @@ void GameLoop::Render()
 // Unload assets to release memory
 void GameLoop::UnloadContent()
 {
+	//delete enemySpawner;
 	delete player;
-	delete enemy;
 	delete map;
 	delete ocean;
 	delete shipBase;

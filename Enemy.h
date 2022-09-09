@@ -19,11 +19,11 @@ public:
 	void Attack(Vector2 dir);
 
 public:
-	EnemyHealthComponent* GetHealthComponent() { return health; }
+	//EnemyHealthComponent* GetHealthComponent() { return health; }
 
 private:
 	GameObject* target = nullptr;	// target obj to move towards
-	EnemyHealthComponent* health = nullptr;
+	//EnemyHealthComponent* health = nullptr;
 
 	const float attackDistance = 100.0f;
 };

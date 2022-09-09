@@ -28,6 +28,7 @@
     <ClCompile Include="EnemyHealthComponent.cpp" />
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameObjectSpawner.cpp" />
     <ClCompile Include="HealthComponent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathUtils.cpp" />
@@ -51,6 +52,7 @@
     <ClInclude Include="EnemyHealthComponent.h" />
     <ClInclude Include="GameLoop.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameObjectSpawner.h" />
     <ClInclude Include="HealthComponent.h" />
     <ClInclude Include="MathUtils.h" />
     <ClInclude Include="PlayerHealthComponent.h" />

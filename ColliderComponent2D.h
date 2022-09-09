@@ -16,6 +16,9 @@ public:
 	~ColliderComponent2D();
 
 public:
+	virtual void Update(double deltaTime) override;
+
+public:
 	SDL_Rect* GetRect() { return collider; }
 	void SetRect(SDL_Rect* value) { collider = value; }
 	void SetRect(int x, int y, int w, int h);
@@ -34,6 +37,8 @@ public:
 
 private:
 	SDL_Rect* collider = new SDL_Rect();
+
+	Sprite* sprite = nullptr;
 
 	int layer = 0;
 };

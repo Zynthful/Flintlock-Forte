@@ -19,7 +19,6 @@ public:
 	virtual void OnOverlapStay(ColliderComponent2D* source, ColliderComponent2D* other) override;
 
 	virtual void Update(double deltaTime) override;
-
 private:
 	ColliderComponent2D* collider = nullptr;
 	VelocityComponent* velComp = nullptr;
@@ -36,5 +35,6 @@ private:
 	float lifeTime = 2.0f;
 	float currentLifeTime = 0.0f;
 
-	void OnBeginOverlap(ColliderComponent2D* collider);
+public:
+	void DoBulletStuff(ColliderComponent2D* collider);
 };

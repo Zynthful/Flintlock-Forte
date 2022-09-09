@@ -13,6 +13,7 @@ public:
 	virtual void Render();
 
 	GameObject* GetOwner();
+
 	void SetOwner(GameObject* obj);
 
 protected:
