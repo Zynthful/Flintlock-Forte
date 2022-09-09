@@ -55,6 +55,7 @@ void GameLoop::LoadContent()
 		enemy->SetPosition(spawnPos);
 		enemy->SetName("Enemy");
 		enemy->SetTarget(player);
+		enemy->GetSprite()->SetSprite("assets/Character/Enemy/run.png", new SpriteAnimInfo(6, 200, 200, 145, 60));
 	}
 
 	//enemySpawner = new GameObjectSpawner(renderer, player);
