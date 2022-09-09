@@ -9,8 +9,8 @@ class PlayerHealthComponent;
 class Player : public Character
 {
 public:
-	Player(SDL_Renderer* _renderer, const char* _spritePath);
-	Player(SDL_Renderer* _renderer, const char* _spritePath, SpriteAnimInfo* _animInfo);
+	Player(SDL_Renderer* _renderer, const char* _spritePath, int _layer = 0);
+	Player(SDL_Renderer* _renderer, const char* _spritePath, SpriteAnimInfo* _animInfo, int _layer = 0);
 	~Player();
 
 private:

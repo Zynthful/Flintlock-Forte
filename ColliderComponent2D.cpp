@@ -5,27 +5,37 @@ ColliderComponent2D::ColliderComponent2D(int _layer, SDL_Rect* rect)
 	: layer(_layer)
 {
 	GameLoop::GetECSManager()->RegisterCollider(this);
-	collider = rect;
+	SetRect(rect);
 }
 
 ColliderComponent2D::ColliderComponent2D(int _layer, int _x, int _y, int _w, int _h)
 	: layer(_layer)
 {
-	collider->x = _x;
-	collider->y = _y;
-	collider->w = _w;
-	collider->h = _h;
+	SetRect(_x, _y, _w, _h);
 }
 
 ColliderComponent2D::ColliderComponent2D(int _layer,  Sprite* sprite)
 	: layer(_layer)
 {
-	*collider = sprite->GetRect();
+	SetRect(sprite);
 }
 
 ColliderComponent2D::~ColliderComponent2D()
 {
 
+}
+
+void ColliderComponent2D::SetRect(int x, int y, int w, int h)
+{
+	collider->x = x;
+	collider->y = y;
+	collider->w = w;
+	collider->h = h;
+}
+
+void ColliderComponent2D::SetRect(Sprite* sprite)
+{
+	*collider = sprite->GetRect();
 }
 
 void ColliderComponent2D::OnBeginOverlap(ColliderComponent2D* collider)

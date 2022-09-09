@@ -18,6 +18,8 @@ public:
 public:
 	SDL_Rect* GetRect() { return collider; }
 	void SetRect(SDL_Rect* value) { collider = value; }
+	void SetRect(int x, int y, int w, int h);
+	void SetRect(Sprite* sprite);
 
 	int GetLayer() { return layer; }
 	void SetLayer(int value) { layer = value; }

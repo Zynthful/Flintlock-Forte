@@ -1,15 +1,15 @@
 #include "Player.h"
 #include "PlayerHealthComponent.h"
 
-Player::Player(SDL_Renderer* _renderer, const char* _spritePath)
-	: Character(_renderer, _spritePath)
+Player::Player(SDL_Renderer* _renderer, const char* _spritePath, int _layer)
+	: Character(_renderer, _spritePath, _layer)
 {
 	input = new PlayerInputComponent(this);
 	health = &AddComponent<PlayerHealthComponent>();
 }
 
-Player::Player(SDL_Renderer* _renderer, const char* _spritePath, SpriteAnimInfo* _animInfo)
-	: Character(_renderer, _spritePath, _animInfo)
+Player::Player(SDL_Renderer* _renderer, const char* _spritePath, SpriteAnimInfo* _animInfo, int _layer)
+	: Character(_renderer, _spritePath, _animInfo, _layer)
 {
 	input = new PlayerInputComponent(this);
 	health = &AddComponent<PlayerHealthComponent>();

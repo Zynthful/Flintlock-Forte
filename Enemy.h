@@ -8,8 +8,8 @@ class EnemyHealthComponent;
 class Enemy : public Character
 {
 public:
-	Enemy(SDL_Renderer* renderer, const char* spritePath);
-	Enemy(SDL_Renderer* renderer, const char* spritePath, SpriteAnimInfo* _animInfo);
+	Enemy(SDL_Renderer* renderer, const char* spritePath, int _layer = 0);
+	Enemy(SDL_Renderer* renderer, const char* spritePath, SpriteAnimInfo* _animInfo, int _layer = 0);
 	~Enemy();
 
 public:

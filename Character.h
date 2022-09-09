@@ -10,8 +10,8 @@ struct SpriteAnimInfo;
 class Character : public GameObject
 {
 public:
-	Character(SDL_Renderer* _renderer, const char* _spritePath);
-	Character(SDL_Renderer* _renderer, const char* _spritePath, SpriteAnimInfo* _animInfo);
+	Character(SDL_Renderer* _renderer, const char* _spritePath, int _layer = 0);
+	Character(SDL_Renderer* _renderer, const char* _spritePath, SpriteAnimInfo* _animInfo, int _layer = 0);
 
 	~Character();
 
@@ -46,4 +46,6 @@ protected:
 	VelocityComponent* velComp = &AddComponent<VelocityComponent>(speed, acceleration, deceleration);
 
 	SDL_Renderer* renderer;
+
+	ColliderComponent2D* collider = nullptr;
 };
