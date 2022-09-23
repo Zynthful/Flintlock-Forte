@@ -1,5 +1,6 @@
 #include "ColliderComponent2D.h"
 #include "GameLoop.h"
+#include "GameObject.h"
 
 ColliderComponent2D::ColliderComponent2D(SDL_Rect* rect)
 {

@@ -1,11 +1,15 @@
 #include "ECSManager.h"
 #include "GameObject.h"
 
-// calls Update on all gameObjects
+/// <summary>
+/// Calls Update on all gameObjects
+/// </summary>
+/// <param name="deltaTime">Realtime in seconds since last frame</param>
 void ECSManager::Update(double deltaTime)
 {
 	for (auto& e : gameObjects)
 	{
+		// temp GetActive check until Refresh works
 		if (e->GetActive())
 		{
 			e->Update(deltaTime);
@@ -13,11 +17,15 @@ void ECSManager::Update(double deltaTime)
 	}
 }
 
-// calls Render on all gameObjects
+
+/// <summary>
+/// Calls Render on all gameObjects
+/// </summary>
 void ECSManager::Render()
 {
 	for (auto& e : gameObjects)
 	{
+		// temp GetActive check until Refresh works
 		if (e->GetActive())
 		{
 			e->Render();
@@ -25,32 +33,29 @@ void ECSManager::Render()
 	}
 }
 
-// looks for inactive components and removes them
+
+/// <summary>
+///
+/// </summary>
 void ECSManager::Refresh()
 {
-	gameObjects.erase(std::remove_if(std::begin(gameObjects), std::end(gameObjects),
-		[](const std::unique_ptr<GameObject>& mGameObject)
-		{
-			return !mGameObject->GetActive();
-		}),
-		std::end(gameObjects));
 }
 
-// Adds a gameobject to the world
-GameObject& ECSManager::AddNewGameObject()
-{
-	GameObject* obj = new GameObject();
-	RegisterGameObject(obj);
-	return *obj;
-}
 
-// Register GameObject to our vector of gameObjects
+/// <summary>
+/// Registers a given GameObject to the manager, allowing it to be managed
+/// </summary>
+/// <param name="obj">The GameObject to register</param>
 void ECSManager::RegisterGameObject(GameObject* obj)
 {
 	std::unique_ptr<GameObject> uPtr { obj };
 	gameObjects.emplace_back(std::move(uPtr));
 }
 
+/// <summary>
+/// Registers a collider to the manager
+/// </summary>
+/// <param name="colliderComp">The collider to manage</param>
 void ECSManager::RegisterCollider(ColliderComponent2D* colliderComp)
 {
 	//std::unique_ptr<ColliderComponent2D> uPtr{ colliderComp };

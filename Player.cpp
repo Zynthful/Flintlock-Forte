@@ -2,6 +2,8 @@
 #include "Sprite.h"
 #include "ColliderComponent2D.h"
 #include "VelocityComponent.h"
+#include "ColliderComponent2D.h"
+#include "Projectile.h"
 
 Player::Player(SDL_Renderer* _renderer, int _layer)
 	: Character(_renderer, _layer)

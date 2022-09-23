@@ -5,10 +5,6 @@ Component::~Component()
 
 }
 
-void Component::Initialise()
-{
-}
-
 void Component::Update(double deltaTime)
 {
 }

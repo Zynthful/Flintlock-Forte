@@ -7,6 +7,7 @@ Projectile::Projectile(SDL_Renderer* _renderer, Vector2 _dir, Vector2 _pos, int 
 	: targetLayer(_targetLayer)
 {
 	SetPosition(_pos);
+	SetName("Projectile");
 
 	isBul = true;
 	trgtLayer = 2;

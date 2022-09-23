@@ -1,5 +1,9 @@
 #include "GameLoop.h"
 #include "GameObjectSpawner.h"
+#include "Player.h"
+#include "Enemy.h"
+#include "PlayerInputComponent.h"
+#include "ColliderComponent2D.h"
 
 // Declare static vars
 ECSManager* GameLoop::ecsManager = new ECSManager();
@@ -104,7 +108,7 @@ bool GameLoop::Update()
 			// todo: make OnBegin and OnEnd not call every frame
 
 			// beware, this std::cout WILL ruin your fps
-			//std::cout << "Comparing " << colliders[i]->GetOwner()->GetName() << " against " << colliders[j]->GetOwner()->GetName() << std::endl;
+			std::cout << "Comparing " << colliders[i]->GetOwner()->GetName() << " against " << colliders[j]->GetOwner()->GetName() << std::endl;
 			if (SDL_HasIntersection(colliders[i]->GetRect(), colliders[j]->GetRect()))
 			{
 				colliders[i]->OnBeginOverlap(colliders[j]);

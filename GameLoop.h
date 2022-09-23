@@ -4,12 +4,12 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
-#include "Player.h"
 #include "ECSManager.h"
-#include "Enemy.h"
+#include "Vector2.h"
 
 class GameObjectSpawner;
 class Player;
+class Enemy;
 
 class GameLoop
 {
@@ -31,7 +31,7 @@ private:
 	Player* player;
 
 	//GameObjectSpawner* enemySpawner = nullptr;
-	int numEnemies = 100;
+	int numEnemies = 1;
 	Vector2 enemySpawnInterval = Vector2(200, 0);
 	Vector2 enemySpawnPos = Vector2(1400, -200);
 

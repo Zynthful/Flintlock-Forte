@@ -1,9 +1,19 @@
 #include "GameObject.h"
 #include "GameLoop.h"
+#include "ColliderComponent2D.h"
 
 GameObject::GameObject(int _layer)
 	: layer(_layer)
 {
+	scale = Vector2(1, 1);
+	name = "GameObject";
+
+	// bullet stuff
+	// (cringe, i know)
+	isBul = false;
+	trgtLayer = 0;
+	damage = 1;
+
 	// Register this object to the ECSManager
 	GameLoop::GetECSManager()->RegisterGameObject(this);
 }

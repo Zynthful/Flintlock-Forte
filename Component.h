@@ -8,12 +8,10 @@ public:
 	virtual ~Component();
 
 public:
-	virtual void Initialise();
 	virtual void Update(double deltaTime);
 	virtual void Render();
 
 	GameObject* GetOwner();
-
 	void SetOwner(GameObject* obj);
 
 protected:

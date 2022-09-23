@@ -1,10 +1,12 @@
 #pragma once
 #include "Character.h"
+#include <SDL.h>
+#include <SDL_image.h>
+#include "PlayerHealthComponent.h"
 #include "PlayerInputComponent.h"
-#include "ColliderComponent2D.h"
-#include "Projectile.h"
 
-class PlayerHealthComponent;
+class Projectile;
+class ColliderComponent2D;
 
 class Player : public Character
 {

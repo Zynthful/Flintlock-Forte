@@ -5,8 +5,6 @@
 #include<SDL_image.h>
 #include "Vector2.h"
 
-class GameObject;
-
 struct SpriteAnimInfo
 {
 	SpriteAnimInfo(
