@@ -161,8 +161,3 @@ void GameLoop::Quit()
 	window = NULL;
 	SDL_Quit();
 }
-
-GameObjectManager* GameLoop::GetObjManager()
-{
-	return gameObjManager;
-}

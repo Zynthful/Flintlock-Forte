@@ -2,4 +2,5 @@
 
 void PlayerHealthComponent::Death()
 {
+	HealthComponent::Death();
 }

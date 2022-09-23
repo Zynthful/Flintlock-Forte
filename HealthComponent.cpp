@@ -1,4 +1,5 @@
 #include "HealthComponent.h"
+#include "GameObject.h"
 
 HealthComponent::HealthComponent()
 {
@@ -11,7 +12,16 @@ HealthComponent::~HealthComponent()
 
 float HealthComponent::SetHealth(int value)
 {
-	return health = MathUtils::Clamp(value, 0.0f, maxHealth);
+	health = MathUtils::Clamp(value, 0.0f, maxHealth);
+	if (health <= 0)
+	{
+		Death();
+	}
+	else
+	{
+		isAlive = true;
+	}
+	return health;
 }
 
 void HealthComponent::SetMaxHealth(int value)
@@ -31,8 +41,10 @@ void HealthComponent::Heal(int amount)
 
 void HealthComponent::Death()
 {
-	if (GetIsDead())
+	if (!isAlive)
 		return;
 
-	SetHealth(0);
+	isAlive = false;
+	health = 0;						// in case health is not already at 0
+	GetOwner()->SetActive(false);	// disable this obj. note: should not do this if we want to trigger a death anim or other state
 }

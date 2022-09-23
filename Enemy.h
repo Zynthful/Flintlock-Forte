@@ -26,4 +26,6 @@ private:
 	//EnemyHealthComponent* health;
 
 	const float attackDistance = 100.0f;
+
+	EnemyHealthComponent* health;
 };

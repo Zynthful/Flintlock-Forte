@@ -21,7 +21,7 @@ public:
 	void UnloadContent();
 	void Quit();
 
-	static GameObjectManager* GetObjManager();
+	static GameObjectManager* GetObjManager() { return gameObjManager; }
 
 private:
 	static GameObjectManager* gameObjManager;

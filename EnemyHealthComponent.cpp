@@ -2,4 +2,5 @@
 
 void EnemyHealthComponent::Death()
 {
+	HealthComponent::Death();
 }

@@ -18,7 +18,7 @@ Enemy::Enemy(SDL_Renderer* _renderer, int _layer)
 	sprite = &AddComponent<Sprite>(renderer, defaultSpritePath);
 	collider = &AddComponent<ColliderComponent2D>(sprite);
 	velComp = &AddComponent<VelocityComponent>(speed, acceleration, deceleration);
-	//health = &AddComponent<EnemyHealthComponent>();
+	health = &AddComponent<EnemyHealthComponent>();
 
 	sprite->Set(&anims[0]);
 }

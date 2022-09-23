@@ -30,7 +30,7 @@ private:
 
 	int targetLayer = 0;
 
-	int damage = 1;
+	int damage;
 	
 	float lifeTime = 2.0f;
 	float currentLifeTime = 0.0f;

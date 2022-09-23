@@ -12,6 +12,8 @@ private:
 	int health = 0;
 	int maxHealth = 100;
 	int startingHealth = 100;
+
+	bool isAlive;
 	
 	// cooldown after damage before damage can be applied again
 	// TODO: implementation
@@ -24,7 +26,7 @@ public:
 	void SetMaxHealth(int value);
 	int GetMaxHealth() { return maxHealth; }
 
-	bool GetIsDead() { return health <= 0; }
+	bool GetIsAlive() { return isAlive; }
 
 	// todo: add damage source, heal source
 	void TakeDamage(int amount);

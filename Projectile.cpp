@@ -11,6 +11,7 @@ Projectile::Projectile(SDL_Renderer* _renderer, Vector2 _dir, Vector2 _pos, int 
 
 	isBul = true;
 	trgtLayer = 2;
+	damage = 40;
 
 	defaultSpritePath = "assets/Projectile/FlintlockBullet.png";
 

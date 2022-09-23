@@ -4,6 +4,7 @@
 /// Limitations:
 ///  - Assumes each GameObject will only have max 1 component of any type (this is because we're using a bitset to identify if a GameObject has a component)
 ///  - Component's owning GameObject cannot currently be changed after creation
+///  - Get/HasComponent does not work with parent components. e.g. calling Get/HasComponent<HealthComponent> will not return a HealthComponent if the component is a child of HealthComponent (e.g. PlayerHealthComponent)
 
 #pragma once
 #include <array>	// to store array of components and entities

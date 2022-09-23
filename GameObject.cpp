@@ -1,6 +1,7 @@
 #include "GameObject.h"
 #include "GameLoop.h"
 #include "ColliderComponent2D.h"
+#include "EnemyHealthComponent.h"		// bullet - to apply damage on hit target with health component
 
 GameObject::GameObject(int _layer)
 	: layer(_layer)
@@ -12,7 +13,7 @@ GameObject::GameObject(int _layer)
 	// (cringe, i know)
 	isBul = false;
 	trgtLayer = 0;
-	damage = 1;
+	damage = 40;
 
 	// Register this object to the ECSManager
 	GameLoop::GetObjManager()->RegisterGameObject(this);
@@ -41,20 +42,20 @@ void GameObject::Destroy()
 
 void GameObject::OnBeginOverlap(ColliderComponent2D* source, ColliderComponent2D* other)
 {
+	// god help me.
 	if (isBul)
 	{
-
 		// check if the collider is of the layer we want to target
 		if (other->GetOwner()->GetLayer() == trgtLayer)
 		{
-			other->GetOwner()->Destroy();
-			// get health component
-			// do damage if it exists
-			//HealthComponent* health = &(other->GetOwner()->GetComponent<HealthComponent>());
-			//if (health != NULL)
-			//{
-			//	health->TakeDamage(damage);
-			//}
+			// get enemy health component, then do damage if it exists
+			// todo: rework for any health comp
+			if (other->GetOwner()->HasComponent<EnemyHealthComponent>())
+			{
+				EnemyHealthComponent* health = &(other->GetOwner()->GetComponent<EnemyHealthComponent>());
+				health->TakeDamage(damage);
+			}
+
 			Destroy();
 		}
 	}
