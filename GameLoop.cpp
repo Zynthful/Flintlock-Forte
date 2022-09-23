@@ -6,7 +6,7 @@
 #include "ColliderComponent2D.h"
 
 // Declare static vars
-ECSManager* GameLoop::ecsManager = new ECSManager();
+GameObjectManager* GameLoop::gameObjManager = new GameObjectManager();
 
 void GameLoop::Initialise()
 {
@@ -87,12 +87,12 @@ bool GameLoop::Update()
 	}
 
 	// invoke Update on GameObjects and Components
-	ecsManager->Update(deltaTime);
+	gameObjManager->Update(deltaTime);
 
 	// Loop through all colliders on each layer
 	// Check for collision against other colliders on that layer
 	// Invoke relevant events
-	auto& colliders = ecsManager->GetColliderComponents();
+	auto& colliders = gameObjManager->GetColliderComponents();
 	for (int i = 0; i < colliders.size(); i++)
 	{
 		// don't check for collision if this collider's owner is disabled
@@ -107,8 +107,8 @@ bool GameLoop::Update()
 
 			// todo: make OnBegin and OnEnd not call every frame
 
-			// beware, this std::cout WILL ruin your fps
-			std::cout << "Comparing " << colliders[i]->GetOwner()->GetName() << " against " << colliders[j]->GetOwner()->GetName() << std::endl;
+			// beware, this cout WILL ruin your fps
+			//std::cout << "Comparing " << colliders[i]->GetOwner()->GetName() << " against " << colliders[j]->GetOwner()->GetName() << std::endl;
 			if (SDL_HasIntersection(colliders[i]->GetRect(), colliders[j]->GetRect()))
 			{
 				colliders[i]->OnBeginOverlap(colliders[j]);
@@ -135,7 +135,8 @@ void GameLoop::Render()
 	// ORDER OF RENDERING MATTERS (later = renders on top)
 
 	// invoke Render on GameObjects and Components
-	ecsManager->Render();
+	gameObjManager->Render();
+
 	//ecsManager->Update(deltaTime);	// uncomment to see sdl draw rect boxes on colliders
 										// i know, cringe
 
@@ -161,7 +162,7 @@ void GameLoop::Quit()
 	SDL_Quit();
 }
 
-ECSManager* GameLoop::GetECSManager()
+GameObjectManager* GameLoop::GetObjManager()
 {
-	return ecsManager;
+	return gameObjManager;
 }

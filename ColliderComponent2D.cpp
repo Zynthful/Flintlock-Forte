@@ -5,20 +5,20 @@
 ColliderComponent2D::ColliderComponent2D(SDL_Rect* rect)
 {
 	SetRect(rect);
-	GameLoop::GetECSManager()->RegisterCollider(this);
+	GameLoop::GetObjManager()->RegisterCollider(this);
 }
 
 ColliderComponent2D::ColliderComponent2D(int _x, int _y, int _w, int _h)
 {
 	SetRect(_x, _y, _w, _h);
-	GameLoop::GetECSManager()->RegisterCollider(this);
+	GameLoop::GetObjManager()->RegisterCollider(this);
 }
 
 ColliderComponent2D::ColliderComponent2D(Sprite* _sprite)
 	: sprite(_sprite)
 {
 	SetRect(sprite);
-	GameLoop::GetECSManager()->RegisterCollider(this);
+	GameLoop::GetObjManager()->RegisterCollider(this);
 }
 
 ColliderComponent2D::~ColliderComponent2D()

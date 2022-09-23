@@ -93,7 +93,7 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\Character</Filter>
     </ClCompile>
-    <ClCompile Include="ECSManager.cpp">
+    <ClCompile Include="GameObjectManager.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
@@ -140,10 +140,10 @@
     <ClInclude Include="Character.h">
       <Filter>Header Files\Character</Filter>
     </ClInclude>
-    <ClInclude Include="ECSManager.h">
+    <ClInclude Include="GameObjectManager.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="ECS.h">
+    <ClInclude Include="GameObjectComponentSystem.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="EnemyHealthComponent.h">

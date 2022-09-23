@@ -5,7 +5,7 @@
 class GameObject;
 class ColliderComponent2D;
 
-class ECSManager
+class GameObjectManager
 {
 public:
 	void Update(double deltaTime);

@@ -23,7 +23,7 @@
     <ClCompile Include="ColliderComponent2D.cpp" />
     <ClCompile Include="CollisionLayer.cpp" />
     <ClCompile Include="Component.cpp" />
-    <ClCompile Include="ECSManager.cpp" />
+    <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyHealthComponent.cpp" />
     <ClCompile Include="GameLoop.cpp" />
@@ -45,8 +45,8 @@
     <ClInclude Include="ColliderComponent2D.h" />
     <ClInclude Include="CollisionLayer.h" />
     <ClInclude Include="Component.h" />
-    <ClInclude Include="ECS.h" />
-    <ClInclude Include="ECSManager.h" />
+    <ClInclude Include="GameObjectComponentSystem.h" />
+    <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyHealthComponent.h" />
     <ClInclude Include="GameLoop.h" />

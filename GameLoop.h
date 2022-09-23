@@ -4,7 +4,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
-#include "ECSManager.h"
+#include "GameObjectManager.h"
 #include "Vector2.h"
 
 class GameObjectSpawner;
@@ -21,11 +21,10 @@ public:
 	void UnloadContent();
 	void Quit();
 
-	static ECSManager* GetECSManager();
+	static GameObjectManager* GetObjManager();
 
 private:
-	// Entity Component System Manager
-	static ECSManager* ecsManager;
+	static GameObjectManager* gameObjManager;
 
 	// Game objects
 	Player* player;

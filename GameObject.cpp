@@ -15,7 +15,7 @@ GameObject::GameObject(int _layer)
 	damage = 1;
 
 	// Register this object to the ECSManager
-	GameLoop::GetECSManager()->RegisterGameObject(this);
+	GameLoop::GetObjManager()->RegisterGameObject(this);
 }
 
 GameObject::~GameObject()

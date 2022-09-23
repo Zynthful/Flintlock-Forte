@@ -1,5 +1,5 @@
 #pragma once
-#include "ECS.h"
+#include "GameObjectComponentSystem.h"
 #include "Component.h"
 #include <vector>
 #include <memory>	// to use unique_ptr
